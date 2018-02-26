@@ -1,5 +1,5 @@
 var mongoose=require('mongoose');
-var dbURI="mongodb://localhost:27017/Restfinder";
+var dbURI="mongodb://<dbuser>:<dbpassword>@ds249398.mlab.com:49398/restfinder";
 mongoose.connect(dbURI);
 mongoose.connection.on('connected', function(){
 
