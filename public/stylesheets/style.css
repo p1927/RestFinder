@@ -1,0 +1,201 @@
+body {
+  padding: 30px;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  background-image: url('/images/restback.jpg');
+  background-repeat: no-repeat;
+  }
+
+
+
+a {
+  color: #00B7FF;
+}
+
+form {/*float:right;  made changes for New comment*/
+}
+/**************************************************************************************//*Navbar Layouts*/
+nav {opacity:0.8;
+	font-size:18px;
+	padding:30px;
+	margin-bottom: 30px;
+}
+.navbar-brand{
+	font-size:34px !important;
+	margin-right: 10%;
+}
+
+.nav-item {margin-right: 20px;
+	
+}
+
+
+nav>a>img {margin: 10px;
+margin-right: 20px;}
+
+/**************************************************************************************/
+#content>.row>.col-xs-12.col-sm-8{
+	font-size: 18px;
+	text-align: justify;
+	}
+
+#banner >.row>.col-lg-6> h1{
+	font-size: 70px !important;
+	margin: 0px;
+}
+#banner{font-size: 18px;}
+
+.panel.sub{ 
+padding: 20px;
+margin-left: 10%;
+margin-right: 10%;
+margin-bottom: 7%;
+line-height: 2;
+}
+
+#opacity{
+background: rgba(0,0,0,.8);
+margin:5%;
+padding: 30px;
+margin-bottom: 5px;
+}
+
+.carousel-inner{
+	margin-top: 0px;
+}
+
+p.page,p.page-header{font-size: 20px;
+margin-left: 0px;}
+
+footer{ background: rgba(0,0,0,0.7);
+margin-left: -25px;
+margin-right: -25px;
+padding:10px; }
+
+.page-head{ font-size: 20px;
+	font-weight: bold;
+ line-height: 30px;
+transition: font-size 1s;
+margin-top: 10px; }
+.page-head:hover {
+    font-size: 22px;
+}
+
+/**************************************************************************************//*All Locations box*/
+
+.boxzoom>a {
+	text-decoration: none !important;
+	}
+
+.boxzoom:hover{ -webkit-transition: all 0.4s;
+	transition: all 0.4s;
+	color:white;
+  transform:scale(1.01);
+  transform: translateX(10px);
+  background: rgba(251, 251, 251, 0.4);
+ }
+
+ .boxzoom{
+ padding:10px;
+ 	/*border-radius: 20px;*/
+ 	 box-shadow    : 0 0 0.5em rgba(251,251,251,0.0625);
+	display:inline-block;
+    width:100%;
+    background: rgba(251, 251, 250, 0.2);
+   border-bottom: 0.5px solid black;
+ }
+/**************************************************************************************/
+#frame{padding: 10px;
+border:25px;
+border-color: blue;
+width:100%;
+ height:574px;
+ 
+ }
+
+ .card-text{
+ 	font-size: 25px;
+ 	font-weight: bolder;
+ 	text-align: center;
+ 	 background: rgba(223, 110, 30, 1);
+ 	 color: black;
+ }
+
+ .review{
+ 	margin-top: 15px;
+ 	text-align: justify;
+ 	line-height: 20px;
+ }
+
+ .reviews{
+ 	margin-top: 20px;
+
+ }
+
+ .comment,.comment>button{
+font-size: 15px !important;
+ 	margin: 10px;
+ 	text-align: justify;
+ 	line-height: 20px;
+ }
+
+
+ .boxzoom1{
+ padding:10px;
+ padding-top: 0px;
+ 	display:inline-block;
+    width:100%;
+    background: rgba(251, 251, 250, 0.2);
+   
+ }
+ .boxzoom1>a {
+	text-decoration: none !important;
+	}
+
+.opacitypanel{
+
+margin:5%;
+margin-top: 0px;
+padding: 30px;
+}
+
+.recentreviews{
+ 	margin-top: 20px;
+font-size: 0.8em;
+
+ }
+
+  .boxzoomrecent{
+ padding:10px;
+ padding-top: 0px;
+ 	display:inline-block;
+    width:100%;
+    background: rgba(251, 251, 250, 0.2);
+   
+ }
+  .boxzoomrecent>a>.page-head {
+	text-decoration: none !important;
+	font-size: 1.2em;
+	}
+
+.boxzoomrecent>p>button.btn{
+font-size: 1em !important;
+
+}
+
+.bigtext{
+
+	font-size: 2em;
+}
+
+.no-decor>span>a {text-decoration: none !important;}
+													
+/**************************************************************************************/ /*Delete Review Badge and btn (Single Location)*/
+.changes{											
+	padding: 2px 0px 2px 0px!important;				
+	margin:1px;
+	height:38px ;
+}
+.badgeconfirmdelete{
+	background: rgba(251, 251, 250, 0.2) !important;
+}
+/**************************************************************************************/

@@ -1,0 +1,20 @@
+mixin outputRating(rating,size)              
+               - for (var i = 1; i <= rating; i++)
+                  span 
+                    a(href='#') 
+                     img(src='/images/favorite.png', height='#{size}px', width='#{size}px')
+               - for (i = rating; i < 5; i++)
+                   span 
+                    a(href='#') 
+                     img(src='/images/favorite1.png', height='#{size}px', width='#{size}px')
+
+//=============================================================
+
+mixin formatDate(dateString)
+                  -var date = new Date(dateString);
+                  -var monthNames = [ "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December" ];
+                  -var d = date.getDate();
+                  -var m = monthNames[date.getMonth()];
+                  -var y = date.getFullYear();
+                  -var output = d + ' ' + m + ' ' + y;
+                  =output

@@ -1,0 +1,31 @@
+extends layout
+
+block content
+   #opacity
+    #banner.page-header
+     .row
+       .col-lg-6
+        h1 #{name}
+        small &nbsp;
+    #content.page-header
+     .row
+      .col-xs-12.col-sm-8
+            div Thanks for Rating us!
+             p.pull-right
+               +outputRating(rating,30)
+               
+            div.bigtext We need more people like you!!
+      .col-xs-12.col-sm-4
+        p.page If unsatisfied tell us, if satisfied tell others.
+        hr
+        p.page Make RestFinder simple, easy, fast, and fun food finder with genuine ratings and reviews.
+     #redirect.row.bigtext 
+   script.
+    window.onload = function () {var sec=5;
+    var timer = setInterval(function (){
+    --sec;
+    if(sec<1){  clearInterval(timer); window.location.replace('../');}
+    document.getElementById('redirect').innerHTML='Redirecting to Location Page in '+sec+"  seconds";},1000);
+    };
+
+  

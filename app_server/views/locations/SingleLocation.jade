@@ -1,0 +1,122 @@
+extends layout
+
+block content
+ #opacity
+  #banner.page-header
+   .row
+     .col-lg-6
+      h1 #{content.name}
+      small &nbsp;#{content.tagline}
+     .col-lg-6
+       p.pull-right
+             +outputRating(content.avgrating,40)
+       |<br><br>
+       h2.pull-right  #{content.distance}
+  #content.page-header
+   .row
+    .col-xs-12.col-sm-5
+          p.page Address
+          .page  #{content.address}
+            hr
+          p.page Opening hours
+          .page
+            each opening in content.openinghrs
+             p #{opening}
+            hr
+          p.page Facilities
+          each facility in content.facilities
+                 button.btn.btn-light(type='button')  #{facility}
+                 | &nbsp;
+          hr
+          p.page Contact  
+            p E-mail : #{content.email}
+            p Website  : #{content.website}
+            p Telephone No: #{content.telephone}
+    .col-xs-12.col-sm-7
+      p.page Location
+      #frame.page
+        // iframe(src='#{content.locationmap}', height='100%', width='100%', allowfullscreen='')
+    hr
+ .opacitypanel 
+      p.page-head 
+          span
+                  a(href="./review/new?name=#{content.name}") 
+                    img(src='/images/contract.png', height='30px', width='30px')
+          | &nbsp; &emsp;
+          a(href="/locations/#{content._id}/review") Customer Reviews 
+               
+      - each review in content.reviews
+         .row.reviews 
+          .col-xs-12.col-sm-10  
+           .boxzoom1 
+              a(href="/location") 
+                .page-head #{review.reviewtitle}
+                  p.pull-right
+                   +outputRating(review.rating,25)
+                 p 
+                   +formatDate(review.reviewdate)
+                 p.review #{review.review}
+              p
+                 button.btn.btn-light(type='button') Comment 
+                  | &nbsp; 
+                  span.badge.badge-light  #{review.commentnos}
+                 | &nbsp;
+                 button.btn.btn-success(type='button')  Upvote  
+                  | &nbsp; 
+                  span.badge.badge-default  #{review.upvotes}
+                  | &nbsp;
+                  button.btn.changes
+                   span.confirm 
+                    img(src='/images/bin.png', height='30px', width='30px')
+                    .badge.badgeconfirmdelete
+                      span(id="delete"+"#{review._id}" class="correct")
+                       img(src='/images/correct.png', height='30px', width='30px')
+                      |&nbsp;
+                      span.cancel
+                       img(src='/images/cancel.png', height='30px', width='30px')
+                  
+                  | &nbsp;
+                 button.btn.btn-secondary.pull-right(type='button')  #{review.author}
+                 hr
+ script.
+     $( document ).ready(function() {                             //first time hidehide confirm options
+        $(".confirm").find('.badge').toggle();  });
+     
+     $(".confirm").click(function () {                             //show confirm options
+        $(this).find('.badge').toggle();       });
+
+     $(".cancel").click(()=>{                              //hide confirm options
+        $(this).find('.badge').toggle();        });
+
+     $("[id^=delete]").click(function(){                    //select  delete review icon span
+     var id=this.id.split("delete")[1];
+     $.ajax({ 
+      url: "./"+id,
+      type: "DELETE",
+      cache: false,
+      success: (res)=>{ console.log("Removed Review"+res.message);
+      $(this).parents(".row.reviews")[0].remove(); 
+                    
+             }
+      });
+      });
+
+    
+                 
+//            - each comment in review.comments
+//                .row
+ //                .col-xs-12
+ //                 .boxzoom1
+ //                   .comment  +formatDate(comment.commentdate)
+  //                  .comment #{comment.comment}
+ //                   p.comment
+ //                      span.badge-pill.badge-info Reply 
+ //                       | &nbsp; 
+ //                       span.badge-default.badge-pill  #{comment.replynos}
+ //                       | &nbsp;
+ //                      span.badge-pill.badge-info Upvote  
+ //                       | &nbsp; 
+ //                       span.badge-default.badge-pill  #{comment.upvotes}
+ //                       | &nbsp;
+ //                      span.badge-pill.pull-right.badge-secondary  #{comment.author}
+ //                      hr

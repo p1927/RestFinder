@@ -1,0 +1,52 @@
+extends layout
+
+block content
+ #opacity
+  #banner.page-header
+   .row
+     .col-lg-6
+      h1 #{name}
+      small &nbsp;Add review to help people !
+  #content.page-header
+   .row
+    .col-xs-12.col-sm-8
+          div Rate us!
+                p.pull-right
+                 span(onclick='setrating(1)') 
+                  img#1(src='/images/favorite.png', height='30px', width='30px')
+                 span(onclick='setrating(2)') 
+                  img#2(src='/images/favorite1.png', height='30px', width='30px')
+                 span(onclick='setrating(3)') 
+                   img#3(src='/images/favorite1.png', height='30px', width='30px')
+                 span(onclick='setrating(4)') 
+                  img#4(src='/images/favorite1.png', height='30px', width='30px')
+                 span(onclick='setrating(5)') 
+                  img#5(src='/images/favorite1.png', height='30px', width='30px')
+                 hr
+          form(action='./new', method='post')
+            input#rating(type='hidden', name='rating', value='1')
+            input(type='hidden', name='author', value='#{user.author}')
+            input(type='hidden', name='location', value='#{name}')
+            textarea.form-control(name="reviewtitle", rows="1", placeholder='Add Title!', required)
+            |<br>
+            textarea.form-control(name="review", rows="5", placeholder='Here you go! Start writing here.', required)
+            button.btn.btn-primary.pull-right(type='submit') Add Review
+    .col-xs-12.col-sm-4
+      p.page-header Tell people how your experience was.
+      p.page Make RestFinder simple, easy, fast, and fun food finder with genuine ratings and reviews.
+ script.
+   
+   var setrating= function (rating) {
+   for (var i=1;i < 6;i++)
+   { if (i<=rating) {  $('#'+i).attr('src','/images/favorite.png');} 
+     else  {$('#'+i).attr('src','/images/favorite1.png');}
+   };
+    $('#rating').val(rating);
+   
+   };
+
+   
+
+    
+    
+    

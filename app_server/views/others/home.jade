@@ -1,0 +1,35 @@
+extends layout
+
+block content
+ #opacity
+  #banner.page-header
+   .row
+     .col-lg-6
+      h1 RestFinder
+      small &nbsp;Find places to work with wifi near you!
+  #content.page-header
+   .row
+    .col-xs-12.col-sm-8
+      #carouselExampleIndicators.carousel.slide(data-ride='carousel')
+       ol.carousel-indicators
+         li.active(data-target='#carouselExampleIndicators', data-slide-to='0')
+         li(data-target='#carouselExampleIndicators', data-slide-to='1')
+         li(data-target='#carouselExampleIndicators', data-slide-to='2')
+       .carousel-inner
+         .carousel-item.active
+           p.panel.sub Restaurant Finder provides an easy way to find the best food offers and places to eat near you. If you allow it, the app can find the nearest restaurants just by using your location. However, if you already have a place in mind, type in the address, the name or the zip code and let it work for you!
+         .carousel-item
+          
+           p.panel.sub Furthermore, Restaurant Finder is not only making sure that you don’t get hungry, but also finds the information about open for delivery restaurants, cafes, gas stations, hotels, taxis, pubs, supermarkets and reviews for them all.
+         .carousel-item
+           
+           p.panel.sub You can find all the information you might need, such as opening and working hours, phone numbers and much more!
+       a.carousel-control-prev(href='#carouselExampleIndicators', role='button', data-slide='prev')
+         span.carousel-control-prev-icon(aria-hidden='true')
+         span.sr-only Previous
+       a.carousel-control-next(href='#carouselExampleIndicators', role='button', data-slide='next')
+         span.carousel-control-next-icon(aria-hidden='true')
+         span.sr-only Next
+     .col-xs-12.col-sm-4
+      p.page-header RestFinder helps you find places to rest when out and about.
+      p.page This simple, easy, fast, and fun food finder works worldwide.

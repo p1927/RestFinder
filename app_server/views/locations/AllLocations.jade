@@ -1,0 +1,31 @@
+extends layout
+
+block content
+ #opacity
+  #banner.page-header
+   .row
+     .col-lg-6
+      h1 RestFinder
+      small &nbsp;Find places to work with wifi near you!
+  #content.page-header
+   .row
+    .col-xs-12.col-sm-8
+      each place in locations
+        .boxzoom
+          a(href="/locations/#{place._id}") 
+            .page-head #{place.name}
+              p.pull-right
+               +outputRating(place.avgrating,25)             
+            p.address #{place.address}
+          p
+             each facility in place.facilities
+                 button.btn.btn-light(type='button')  #{facility}
+                 | &nbsp;
+            
+             button.btn.btn-danger.pull-right(type='button')  #{place.distance}
+
+     
+
+    .col-xs-12.col-sm-4
+       p.page-header RestFinder helps you find places to rest when out and about.
+       p.page This simple, easy, fast, and fun food finder works worldwide.
