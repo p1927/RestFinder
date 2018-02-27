@@ -42,7 +42,6 @@ var doSetAverageRating = function(location) {
 			}
 };
 
-//_____________________________________________________________________________________
 module.exports.AllDistanceLocations=function(req, res) {
 	
 	var lng=parseFloat(req.query.lng);
@@ -60,7 +59,8 @@ module.exports.AllDistanceLocations=function(req, res) {
                     'near': { "type" : "Point", "coordinates" : [ lng, lat] },
                     'spherical': true,
                     'distanceField': 'distance1',
-                    'maxDistance': maxDis.toString()
+                    'maxDistance': maxDis,
+                    'limit':10
                 }
             }
         ],
@@ -74,7 +74,7 @@ module.exports.AllDistanceLocations=function(req, res) {
 	else { cordist= parseInt(doc.distance1)+" m";}
 
 	locations.push({
-					distance:cordist,//theEarth.getDistanceFromRads(doc.distance),
+					distance:cordist,
 					name: doc.name,
 					address: doc.address,
 					avgrating: doc.avgrating,

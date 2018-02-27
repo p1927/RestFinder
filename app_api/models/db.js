@@ -1,7 +1,6 @@
 var mongoose=require('mongoose');
 
-var dbURI ="mongodb://admin:admin@ds249398.mlab.com:49398/restfinder";
-// 'mongodb://localhost:27017/Restfinder';
+var dbURI = 'mongodb://localhost:27017/Restfinder';
 if (process.env.NODE_ENV === 'production') {
 dbURI = "mongodb://admin:admin@ds249398.mlab.com:49398/restfinder";
 }
@@ -31,6 +30,7 @@ rl.on ("SIGINT", function (){
 process.emit ("SIGINT");
 });
 };
+
 var gracefulShutdown = function (msg, callback) {
 mongoose.connection.close(function () {
 console.log('Mongoose disconnected through ' + msg);
