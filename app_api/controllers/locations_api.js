@@ -86,33 +86,35 @@ module.exports.AllDistanceLocations=function(req, res) {
 
 	Loc.findById(doc._id).select('distance').exec((err,location)=>{location.distance=cordist; 
 																	location.save((err,location)=>{ 
-																		if (err) { sendJsonResponse(res, 400, err);} 
+																		if (err) { console.log("Error saving distance in locations_api");
+																		console.log('Error',err);
+																		sendJsonResponse(res, 400, err);} 
 																	  });		
 																					});
 			});
 
 	if (locations[0]) 	sendJsonResponse(res,200,locations);
-	else 	sendJsonResponse(res,200,{"message":"No closer locations"});
+	else 	sendJsonResponse(res,200,[]);
         }
     );
+
 
 };
 
 ////////////////////////////////////*Read*/////////////////////////////////////////
-module.exports.AllLocations=function(req, res) {
+module.exports.AllLocations=function(req, res) {  //checked
 	
 Loc.find({})
 	.select('name avgrating distance address openinghrs facilities')
 	.exec((err,location)=>{
 		if(!location)
-			{sendJsonResponse(res,200,{"Result":"Not Found"}); return;}
+			{sendJsonResponse(res,200,[]); return;}
 		else if (err) 
 			{ console.log('Error',err);
 			  sendJsonResponse(res,200,err); return;}
 		else
 			{sendJsonResponse(res,200,location);}
 	});
-
 
 };
 //-----------------------------------------------------------------------------------
@@ -219,6 +221,7 @@ module.exports.SingleReply=function(req, res) {
 
 ////////////////////////////////////*Write*/////////////////////////////////////////
 module.exports.AddLocation=function(req, res) {
+	
 Loc.create({
 name:req.body.name,
 tagline: req.body.tagline,		
@@ -232,8 +235,10 @@ coords: [parseFloat(req.body.lng),parseFloat(req.body.lat)]
  			},
 (err,location)=>{
 
-				if (err) { sendJsonResponse(res, 400, err); } 
-				else { sendJsonResponse(res, 201, location); }
+				if (err) {  console.log('Error',err);
+					sendJsonResponse(res, 400, err); } 
+				else { 	console.log(location);
+					sendJsonResponse(res, 201, location); }
 			    });
 };
 //=====================================================================

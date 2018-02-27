@@ -11,6 +11,7 @@ router.get('/locations/:locationid/review',LocationCtrl.GetAllReviews);
 router.get('/locations/:locationid/review/new',LocationCtrl.CreateReview);
 
 router.post('/locations/:locationid/review/new',LocationCtrl.PostReview);
+router.post('/locations',LocationCtrl.PostLocation);
 
 router.delete('/locations/:locationid/:reviewid',LocationCtrl.DeleteReview);
 

@@ -25,10 +25,21 @@ request (Request_Options,(err,response,body)=>{
 
 if(err)
 	{res.status(500);
-		res.json({"message":"Could not send data to API"});
+		res.render('locations/AllLocations', { title: 'RestFinder AllLocations',  "locations" :[],message:"Could not send data to API"});
 		return;}
 
-else {res.render('locations/AllLocations', { title: 'RestFinder AllLocations',  "locations" :body});}
+else { 	
+	var message; //error processing from api
+	if (!(body instanceof Array)) {
+		message = "API lookup error";
+		body = [];
+	} else {
+		if (!body.length) {
+		message = "No places found nearby";
+	}
+	 }
+
+	res.render('locations/AllLocations', { title: 'RestFinder AllLocations',  "locations" :body, "message":message});}
 });
 
 };
@@ -40,21 +51,29 @@ Request_Options = {
 					url: apiOptions.server+path,
 					method:"GET",
 					json: {},
-					qs: {
-							lng: 0,//not used
-							lat: 0,
-							maxDistance:10
-						}
-				};
+					qs: {}
+			    };
 
 request (Request_Options,(err,response,body)=>{
 
 if(err)
 	{res.status(500);
-		res.json({"message":"Could not send data to API"});
+			res.render('locations/AllLocations', { title: 'RestFinder AllLocations',  "locations" :[],message:"Could not send data to API"});
 		return;}
 
-else {res.render('locations/AllLocations', { title: 'RestFinder AllLocations',  "locations" :body});}
+else { 
+	var message; //error processing from api
+	if (!(body instanceof Array)) {
+		message = "API lookup error";
+		body = [];
+	} else {
+		if (!body.length) {
+		message = "No places in database<button class=\"pull-right btn postlocation\" href=\"#\"><img src=\"/images/contract.png\" height=\"30px\" width=\"30px\"/></button>";
+	}
+	 }
+
+
+	res.render('locations/AllLocations', { title: 'RestFinder AllLocations',  "locations" :body, message:message}); }
 });
 
 };
@@ -145,6 +164,8 @@ request (Request_Options,(err,response,body)=>{
 
 };
 
+
+/************************************Delete review*********************************************************/
 module.exports.DeleteReview=function (req,res){
  
 path= '/api/locations/'+req.params.locationid+'/'+req.params.reviewid;
@@ -176,8 +197,36 @@ request (Request_Options,(err,response,body)=>{
 };
 
 
+/************************************Add Location*********************************************************/
+module.exports.PostLocation=function (req,res){
 
+path= '/api/locations';
+Request_Options = {
+					url: apiOptions.server+path,
+					method:"POST",
+					json: req.body,
+					qs: {}
+				};
 
+request (Request_Options,(err,response,body)=>{
+if(err)
+	{res.status(500);
+		res.json("Could not send data to API");
+		return;}
+
+else { 	
+	var message; //error processing from api
+	if (response.status==400) {
+		res.json("API create error");
+	} 
+	else
+    {   res.status(200);
+    	res.json({ "locations" :body}); }
+        return;
+  }
+  });
+
+};
 
 
 
@@ -192,7 +241,6 @@ module.exports.GetDistanceLocations=GetDistanceLocations;
 module.exports.GetSingleLocation=GetSingleLocation;
 module.exports.GetAllReviews=GetAllReviews;
 module.exports.CreateReview=CreateReview;
-
 
 
 

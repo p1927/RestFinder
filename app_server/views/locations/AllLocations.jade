@@ -10,6 +10,7 @@ block content
   #content.page-header
    .row
     .col-xs-12.col-sm-8
+      p.bigtext.message !{message}
       each place in locations
         .boxzoom
           a(href="/locations/#{place._id}") 
@@ -29,3 +30,8 @@ block content
     .col-xs-12.col-sm-4
        p.page-header RestFinder helps you find places to rest when out and about.
        p.page This simple, easy, fast, and fun food finder works worldwide.
+
+ script(src='/javascripts/AllLocation.js')
+
+
+     
