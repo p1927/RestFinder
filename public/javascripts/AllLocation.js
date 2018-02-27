@@ -55,3 +55,16 @@ $(".postlocation").click(function(){
       }
       });
       });
+
+      $(".findbylocation").click(function(){  
+      $(".distance").toggle();  
+      var value= $(".distance").val();              //select  Add location icon span
+      if (value)
+      {
+          window.location="../locations/distance?lng=78.340959&lat=17.423180&distance="+value;
+            }
+      });
+
+      $(".allocation").click(function(){
+     window.location="../locations";
+     });

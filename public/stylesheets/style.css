@@ -198,4 +198,14 @@ font-size: 1em !important;
 .badgeconfirmdelete{
 	background: rgba(251, 251, 250, 0.2) !important;
 }
+/**************************************************************************************/ /*find by distancebutton*/
+.distance,.allocation {
+
+	display: none; 
+	height:48px;
+	border-radius:5px;
+	background:rgba(251, 251, 250, 0.2);
+	color:white;
+	padding-left:5px;
+}
 /**************************************************************************************/

@@ -1,13 +1,20 @@
 var request = require('request');
 var Request_Options,path;
-var apiOptions = {
-server : "http://localhost:3000"
-};
+var apiOptions = { server : "http://localhost:3000" };
 if (process.env.NODE_ENV === 'production') {
-apiOptions.server = "https://rest-finder.herokuapp.com/";
+apiOptions.server = "https://rest-finder.herokuapp.com";
 }
 ////////////////////////////////////////////////////////////////////////////////////////////////////////
-var GetDistanceLocations=function(req, res, next) {
+var GetDistanceLocations=function(req, res, next) { 
+ 
+	var lng=parseFloat(req.query.lng);
+console.log(lng);
+	var lat=parseFloat(req.query.lat);
+	var maxDis=parseFloat(req.query.distance);
+
+	if(!lat||!lng||!maxDis||lng<-180||lng>180||lat<-90||lat>90||maxDis<10||maxDis>1000000){ 
+		res.render('locations/AllLocations', { title: 'RestFinder AllLocations',  "locations" :[],"message":"Coordinates and Distance are wrong/not provided"});
+		return;}
 
 path= '/api/locations/distance';
 Request_Options = {
@@ -15,14 +22,14 @@ Request_Options = {
 					method:"GET",
 					json: {},
 					qs: {
-							lng: 78.340959,//not used
-							lat: 17.423180,
-							distance:100
+							lng: lng,//not used
+							lat: lat,
+							distance:maxDis
 						}
 				};
 
 request (Request_Options,(err,response,body)=>{
-
+console.log(body);
 if(err)
 	{res.status(500);
 		res.render('locations/AllLocations', { title: 'RestFinder AllLocations',  "locations" :[],message:"Could not send data to API"});
@@ -39,24 +46,24 @@ else {
 	}
 	 }
 
-	res.render('locations/AllLocations', { title: 'RestFinder AllLocations',  "locations" :body, "message":message});}
-});
+	res.render('locations/AllLocations', { title: 'RestFinder AllLocations',  "locations" :body, "message":message});  }
+   });
 
 };
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////
-var GetAllLocations=function(req, res, next) {
+var GetAllLocations=function(req, res, next) {  
 
 path= '/api/locations';
 Request_Options = {
 					url: apiOptions.server+path,
 					method:"GET",
 					json: {},
-					qs: {}
+					qs: { }
 			    };
 
 request (Request_Options,(err,response,body)=>{
 
-if(err)
+	if(err)
 	{res.status(500);
 			res.render('locations/AllLocations', { title: 'RestFinder AllLocations',  "locations" :[],message:"Could not send data to API"});
 		return;}
@@ -74,9 +81,9 @@ else {
 
 
 	res.render('locations/AllLocations', { title: 'RestFinder AllLocations',  "locations" :body, message:message}); }
-});
-
-};
+  });
+ 
+   };
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 var GetSingleLocation=function(req, res, next) {
@@ -225,8 +232,8 @@ else {
         return;
   }
   });
-
-};
+ 
+ };
 
 
 
