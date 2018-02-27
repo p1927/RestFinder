@@ -42,6 +42,7 @@ var doSetAverageRating = function(location) {
 			}
 };
 
+//_____________________________________________________________________________________Distance based Location selector
 module.exports.AllDistanceLocations=function(req, res) {
 	
 	var lng=parseFloat(req.query.lng);
