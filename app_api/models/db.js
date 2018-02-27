@@ -1,5 +1,10 @@
 var mongoose=require('mongoose');
-var dbURI="mongodb://<dbuser>:<dbpassword>@ds249398.mlab.com:49398/restfinder";
+
+var dbURI = 'mongodb://localhost:27017/Restfinder';
+if (process.env.NODE_ENV === 'production') {
+dbURI = "mongodb://<dbuser>:<dbpassword>@ds249398.mlab.com:49398/restfinder";
+}
+
 mongoose.connect(dbURI);
 mongoose.connection.on('connected', function(){
 
