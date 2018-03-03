@@ -243,8 +243,8 @@ module.exports.AddLocation=function(req, res) {
 	email: 		req.body.email,	
 	website: 	req.body.website,	
 	telephone: 	req.body.telephone,	
-	coords: [parseFloat(req.body.lng),parseFloat(req.body.lat)],
-	locationmap: "https://www.google.com/maps/embed/v1/directions?origin="+"8-266/7, ISB Rd, Financial District, Nanakram Guda, Hyderabad, Telangana 500032"+"&destination="+req.body.address+"&key=AIzaSyBpOiiNEJ6Lmiqe1rBc4rY_ZPXPo2OzthU"
+	coords: [parseFloat(req.body.lng),parseFloat(req.body.lat)]
+	
 	 			},
 	(err,location)=>{
 

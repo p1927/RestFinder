@@ -112,8 +112,9 @@ request (Request_Options,(err,response,body)=>{
 		if (!body.message){message="API lookup Error.";}
 		message = body.message;
 		body = [];
-	} 
-    
+	}
+	if (body.length>0) 
+   { body[0].locationmap="https://www.google.com/maps/embed/v1/directions?origin="+"8-266/7, ISB Rd, Financial District, Nanakram Guda, Hyderabad, Telangana 500032"+"&destination="+body[0].address+"&key=AIzaSyBpOiiNEJ6Lmiqe1rBc4rY_ZPXPo2OzthU";}
 		res.render('locations/SingleLocation', {title: 'SingleLocation RestFinder', content: body[0], message:message});  }
 });}
  else {sendJsonResponse(res,404,{"message": "Invalid Address /Location ID "});}

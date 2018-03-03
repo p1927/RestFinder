@@ -40,7 +40,7 @@ email: 			{ type: String},
 website: 		{ type: String},
 telephone: 		{ type: String},
 coords: 		{ type: [Number], required:true, index:'2dsphere'},
-reviews: [locationreview] 
+reviews: [locationreview]
 });
 
 module.exports=mongoose.model('Location',locationschema);
