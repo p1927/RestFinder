@@ -52,7 +52,7 @@ block content
          .row.reviews 
           .col-xs-12  
            .boxzoom1 
-              a(href="/location") 
+              a(href="/locations/#{content._id}/review") 
                 .page-head #{review.reviewtitle}
                   p.pull-right
                    +outputRating(review.rating,25)
