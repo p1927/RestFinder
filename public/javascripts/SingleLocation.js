@@ -1,7 +1,7 @@
   $( document ).ready(function() {                             //first time hidehide confirm options
         $(".confirm").find('.badge').toggle();
 
-$.getScript("http://maps.googleapis.com/maps/api/js?key=" + "AIzaSyAGX2KEn6RyrzyGAJ8KxxwUrTI4MeCMgtA", function()
+$.getScript("https://maps.googleapis.com/maps/api/js?key=" + "AIzaSyAGX2KEn6RyrzyGAJ8KxxwUrTI4MeCMgtA", function()
 {
     // script is now loaded and executed.
     // put your dependent JS here.
