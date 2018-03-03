@@ -1,17 +1,18 @@
-  $( document ).ready(function() {                             //first time hidehide confirm options
+  $( document ).ready(()=> {                             //first time hidehide confirm options
         $(".confirm").find('.badge').toggle();
 
-$.getScript("https://maps.googleapis.com/maps/api/js?key=" + "AIzaSyAGX2KEn6RyrzyGAJ8KxxwUrTI4MeCMgtA", function()
+$.getScript("https://maps.googleapis.com/maps/api/js?key=AIzaSyAGX2KEn6RyrzyGAJ8KxxwUrTI4MeCMgtA", ()=>
 {
     // script is now loaded and executed.
     // put your dependent JS here.
 
         if (navigator.geolocation) { //Checks if browser supports geolocation
-   navigator.geolocation.getCurrentPosition(function (position) {                                                              //This gets the
+   navigator.geolocation.getCurrentPosition((position)=>{                                                              //This gets the
      var latitude = position.coords.latitude;                    //users current
      var longitude = position.coords.longitude;  
      var accuracy = position.coords.accuracy;               //location
-     var coords = new google.maps.LatLng(latitude, longitude); //Creates variable for map coordinates
+     var coords = new google.maps.LatLng(latitude, longitude);
+      var destinationcoords = new google.maps.LatLng(dest[1], dest[0]); //Creates variable for map coordinates
      var directionsService = new google.maps.DirectionsService();
      var directionsDisplay = new google.maps.DirectionsRenderer();
      var mapOptions = //Sets map options
@@ -30,7 +31,7 @@ $.getScript("https://maps.googleapis.com/maps/api/js?key=" + "AIzaSyAGX2KEn6Ryrz
      directionsDisplay.setPanel(document.getElementById('frame'));
      var request = {
        origin: coords,
-       destination: 'Barbeque Nation, Nanakramaguda Road, Beside Wipro Lake, Financial District, Gachibowli, Hyderabad',
+       destination: destinationcoords,
        travelMode: google.maps.DirectionsTravelMode.DRIVING   };
 
        directionsService.route(request, function (response, status) {
@@ -41,7 +42,7 @@ $.getScript("https://maps.googleapis.com/maps/api/js?key=" + "AIzaSyAGX2KEn6Ryrz
  }
    });
    });
-     
+ /////////////////////////////////////////////////////////////////////////////////////////////////    
      $(".confirm").click(function () {                             //show confirm options
         $(this).find('.badge').toggle();       });
 
