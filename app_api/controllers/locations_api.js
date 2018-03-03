@@ -8,11 +8,15 @@ var Loc=require('../models/location_model');
 /////////////////////////////////////////////////////////////////////////////////////////////////////
 //__________________________________________________________setting Averagerating with add review___________________________
 var setAvgRating = function (rating,newlength,location) { 
+	console.log(newlength);
+	console.log(location);
  location.avgrating=parseInt((location.avgrating*(newlength-1)+rating)/newlength);
  location.save((err,location)=>{
-	if (err) {
-								return err;
+	if (err) {console.log('Error API: Rating: ',err);
+								return;
 									} 
+	console.log('Successfully changed Rating');
+	return;
 
   });
 };
@@ -259,7 +263,7 @@ module.exports.AddReview=function(req, res) {
  if(req.params&&req.params.locationid)
  { 
  Loc.findById(req.params.locationid)
-	.select('reviews')
+	.select('avgrating reviews')
 	.exec(function (err,location){
 						 
 							 if(!location)
@@ -281,8 +285,7 @@ module.exports.AddReview=function(req, res) {
 											console.log('Error API: AddReview: ',err);} 
 										else { var len=location.reviews.length;
 											   var thisreview=location.reviews[len-1];
-											   var error=setAvgRating(thisreview.rating,len,location);
-											   console.log('Error API: Rating: ',error);
+											   setAvgRating(thisreview.rating,len,location);
 											   sendJsonResponse(res, 201, {message:"Successfully Posted"}); }
 											   });
 								} 
@@ -400,7 +403,7 @@ module.exports.EditReviews=function(req, res) {
 
  Loc
 	.findById(req.params.locationid)
-	.select('reviews')
+	.select('avgrating reviews')
 	.exec( function(err, location) { 
 					var thisReview;
 					
