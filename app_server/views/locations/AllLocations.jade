@@ -22,7 +22,7 @@ block content
             .page-head #{place.name}
               p.pull-right
                +outputRating(place.avgrating,25)             
-            p.address #{place.address}
+          p.address #{place.address}
           p
              each facility in place.facilities
                  button.btn.btn-light(type='button')  #{facility}

@@ -1,5 +1,5 @@
 doctype html
-html (ng-app='RestfinderAng')
+html(ng-app='RestfinderAng')
   head
     meta(name='viewport',content='width-device-width, initial-scale=1.0')
     title= title
@@ -30,17 +30,8 @@ html (ng-app='RestfinderAng')
            span.sr-only (current)
        li.nav-item
          a.nav-link(href='/about') About
-       li.nav-item.dropdown
-         a#navbarDropdown.nav-link.dropdown-toggle(href='#', role='button', data-toggle='dropdown', aria-haspopup='true', aria-expanded='false')
-           | Features
-         .dropdown-menu(aria-labelledby='navbarDropdown')
-           a.dropdown-item(href='/locations') All Locations
-           a.dropdown-item(href='/locations/123') Single Location
-           a.dropdown-item(href='/locations/distance') Distance Location
-           .dropdown-divider
-           a.dropdown-item(href='/locations/123/review') All Reviews
        li.nav-item
-         a.nav-link.disabled(href='/locations/123/review/new') Create Review
+         a.nav-link(href='/locations') Browse Locations
        li.nav-item
          a.nav-link(href='/users/signup') Sign Up
      form.form-inline.my-2.my-lg-0

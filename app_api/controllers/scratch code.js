@@ -120,3 +120,15 @@
     });*/
 
      }, function(){ $(this).attr('src','/images/favorite1.png');
+
+
+/* Jade Navbar
+     li.nav-item.dropdown
+         a#navbarDropdown.nav-link.dropdown-toggle(href='#', role='button', data-toggle='dropdown', aria-haspopup='true', aria-expanded='false')
+           | Features
+         .dropdown-menu(aria-labelledby='navbarDropdown')
+           a.dropdown-item(href='/locations') All Locations
+           a.dropdown-item(href='/locations/123') Single Location
+           a.dropdown-item(href='/locations/distance') Distance Location
+           .dropdown-divider
+           a.dropdown-item(href='/locations/123/review') All Reviews*/
