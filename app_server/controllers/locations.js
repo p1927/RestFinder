@@ -64,7 +64,7 @@ Request_Options = {
 request (Request_Options,(err,response,body)=>{
 
 	if(err)
-	{res.status(200);
+	{res.status(500);
 			res.render('locations/AllLocations', { title: 'RestFinder AllLocations',  "locations" :[],message:"Could not send data to API"});
 		return;}
 

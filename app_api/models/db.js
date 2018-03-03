@@ -3,7 +3,7 @@ var mongoose=require('mongoose');
 var dbURI = 'mongodb://localhost:27017/Restfinder';
 if (process.env.NODE_ENV === 'production') {
 
-dbURI = "mongodb://admin:admin>@ds249398.mlab.com:49398/restfinder";
+dbURI = "mongodb://admin:admin@ds249398.mlab.com:49398/restfinder";
 
 }
 
