@@ -61,7 +61,12 @@ $(".postlocation").click(function(){
       var value= $(".distance").val();              //select  Add location icon span
       if (value)
       {
-          window.location="../locations/distance?lng=78.340959&lat=17.423180&distance="+value;
+           if (navigator.geolocation) { //Checks if browser supports geolocation
+   navigator.geolocation.getCurrentPosition((position)=>{                                                              //This gets the
+     var latitude = position.coords.latitude;                    //users current
+     var longitude = position.coords.longitude; 
+     window.location="../locations/distance?lng="+longitude+"&lat="+latitude+"&distance="+value; });}
+          
             }
       });
 
