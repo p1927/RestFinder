@@ -37,12 +37,12 @@ block content
     .col-xs-12.col-sm-7
       p.page Location
       #frame.page
-         //iframe(src='#{content.locationmap}', height='100%', width='100%', allowfullscreen='')
+         iframe(src='#{content.locationmap}', height='100%', width='100%', allowfullscreen='')
     hr
  .opacitypanel 
       p.page-head 
           span
-                  a(href="../#{content._id}/review/new?name=#{content.name}") 
+                  a(href="../locations/#{content._id}/review/new?name=#{content.name}") 
                    button.btn
                     img(src='/images/contract.png', height='30px', width='30px')
           | &nbsp; &emsp;

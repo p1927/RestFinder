@@ -113,7 +113,7 @@ request (Request_Options,(err,response,body)=>{
 		message = body.message;
 		body = [];
 	} 
- 
+    
 		res.render('locations/SingleLocation', {title: 'SingleLocation RestFinder', content: body[0], message:message});  }
 });}
  else {sendJsonResponse(res,404,{"message": "Invalid Address /Location ID "});}
