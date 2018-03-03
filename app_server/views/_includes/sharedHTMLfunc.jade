@@ -1,12 +1,10 @@
 mixin outputRating(rating,size)              
                - for (var i = 1; i <= rating; i++)
                   span 
-                    a(href='#') 
-                     img(src='/images/favorite.png', height='#{size}px', width='#{size}px')
+                    img(src='/images/favorite.png', height='#{size}px', width='#{size}px')
                - for (i = rating; i < 5; i++)
                    span 
-                    a(href='#') 
-                     img(src='/images/favorite1.png', height='#{size}px', width='#{size}px')
+                    img(src='/images/favorite1.png', height='#{size}px', width='#{size}px')
 
 //=============================================================
 
