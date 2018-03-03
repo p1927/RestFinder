@@ -75,7 +75,7 @@ else {
 		body = [];
 	} else {
 		if (!body.length) {
-		message = "No places in database<button class=\"pull-right btn postlocation\" href=\"#\"><img src=\"/images/contract.png\" height=\"30px\" width=\"30px\"/></button>";
+		message = "No places in database";
 	}
 	 }
 
