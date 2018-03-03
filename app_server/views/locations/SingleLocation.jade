@@ -40,7 +40,7 @@ block content
          //iframe(src='#{content.locationmap}', height='100%', width='100%', allowfullscreen='')
     hr
  .opacitypanel 
-      p.page-head 
+      p.page-head.panel 
           span
                   a(href="../#{content._id}/review/new?name=#{content.name}") 
                    button.btn
@@ -50,15 +50,15 @@ block content
                
       - each review in content.reviews
          .row.reviews 
-          .col-xs-12.col-sm-10  
+          .col-xs-12  
            .boxzoom1 
               a(href="/location") 
                 .page-head #{review.reviewtitle}
                   p.pull-right
                    +outputRating(review.rating,25)
-                 p 
+              p 
                    +formatDate(review.reviewdate)
-                 p.review #{review.review}
+              p.review #{review.review}
               p
                  button.btn.btn-light(type='button') Comment 
                   | &nbsp; 
