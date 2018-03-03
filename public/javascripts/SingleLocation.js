@@ -9,8 +9,10 @@
 
      $("[id^=delete]").click(function(){                    //select  delete review icon span
      var id=this.id.split("delete")[1];
+     var fullURL=$(location).attr('href').split('#')[0];
+     console.log(fullURL);
      $.ajax({ 
-      url: "./"+id,
+      url: fullURL+id,
       type: "DELETE",
       cache: false,
       success: (res)=>{ console.log("Removed Review"+res.message);

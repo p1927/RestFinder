@@ -6,12 +6,13 @@ block content
    .row
      .col-lg-6
       p.bigtext #{message}
+      - if(content){
       h1 #{content.name}
       small &nbsp;#{content.tagline}
      .col-lg-6
-       p.pull-right
+       p.pull-right.aligncorrection
              +outputRating(content.avgrating,40)
-       |<br><br>
+       |<br><br><br>
        h2.pull-right  #{content.distance}
   #content.page-header
    .row
@@ -36,12 +37,13 @@ block content
     .col-xs-12.col-sm-7
       p.page Location
       #frame.page
-        // iframe(src='#{content.locationmap}', height='100%', width='100%', allowfullscreen='')
+         //iframe(src='#{content.locationmap}', height='100%', width='100%', allowfullscreen='')
     hr
  .opacitypanel 
       p.page-head 
           span
-                  a(href="./review/new?name=#{content.name}") 
+                  a(href="../#{content._id}/review/new?name=#{content.name}") 
+                   button.btn
                     img(src='/images/contract.png', height='30px', width='30px')
           | &nbsp; &emsp;
           a(href="/locations/#{content._id}/review") Customer Reviews 
@@ -79,9 +81,9 @@ block content
                   | &nbsp;
                  button.btn.btn-secondary.pull-right(type='button')  #{review.author}
                  hr
+        -}
  script(src="/javascripts/SingleLocation.js")
-   
-
+         
     
                  
 //            - each comment in review.comments

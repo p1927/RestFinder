@@ -1,5 +1,5 @@
 doctype html
-html
+html (ng-app='RestfinderAng')
   head
     meta(name='viewport',content='width-device-width, initial-scale=1.0')
     title= title
@@ -7,6 +7,8 @@ html
     link(rel='stylesheet', href='/stylesheets/bootstrap.css')
     link(rel='stylesheet', href='/stylesheets/amelia.bootstrap.css')
     include ../_includes/sharedHTMLfunc
+    script(src='/Angular/angular.min.js')
+    script(src='/Angular/RestfinderAng.js')
     script(src='/javascripts/jquery-3.3.1.slim.min.js')
     script(src='/javascripts/bootstrap.min.js')
     script(src='/javascripts/jquery-3.1.0.js')

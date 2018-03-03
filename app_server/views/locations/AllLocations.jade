@@ -18,7 +18,7 @@ block content
       p.bigtext.message !{message}
       each place in locations
         .boxzoom
-          a(href="/locations/#{place._id}") 
+          a(href="/locations/#{place._id}/") 
             .page-head #{place.name}
               p.pull-right
                +outputRating(place.avgrating,25)             

@@ -1,5 +1,5 @@
 body {
-  padding: 30px;
+  padding: 3%;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
   background-image: url('/images/restback.jpg');
   background-repeat: no-repeat;
@@ -54,7 +54,7 @@ line-height: 2;
 
 #opacity{
 background: rgba(0,0,0,.8);
-margin:5%;
+margin:0px 50px 0px 50px;
 padding: 30px;
 margin-bottom: 5px;
 }
@@ -108,7 +108,7 @@ margin-top: 10px; }
 border:25px;
 border-color: blue;
 width:100%;
- height:574px;
+ height:400px;
  
  }
 
@@ -209,3 +209,21 @@ font-size: 1em !important;
 	padding-left:5px;
 }
 /**************************************************************************************/
+.aligncorrection{
+	margin-top: 25px;
+}
+h2.pull-right{
+
+	margin:0px;
+}
+
+#opacityerror{
+
+/* background-image: url('/images/404.jpg');
+  background-repeat: no-repeat;*/
+margin: 0% 3% 0% 3%;
+padding: 3%;
+margin-bottom: 5px;
+
+
+}

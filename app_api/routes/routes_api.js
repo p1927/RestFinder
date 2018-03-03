@@ -11,8 +11,8 @@ router.get('/locations/:locationid/review',LocationCtrl.AllReviews);
 router.get('/locations/:locationid/:reviewid',LocationCtrl.SingleReviews);
 router.get('/locations/:locationid/:reviewid/comment',LocationCtrl.AllComments);
 router.get('/locations/:locationid/:reviewid/:commentid',LocationCtrl.SingleComment);
-router.get('/locations/:locationid/:reviewid/:commentid/reply',LocationCtrl.AllReplies);
-router.get('/locations/:locationid/:reviewid/:commentid/:replyid',LocationCtrl.SingleReply);
+//router.get('/locations/:locationid/:reviewid/:commentid/reply',LocationCtrl.AllReplies);
+//router.get('/locations/:locationid/:reviewid/:commentid/:replyid',LocationCtrl.SingleReply);
 
 /* POST Location pages. */
 router.post('/locations',LocationCtrl.AddLocation);

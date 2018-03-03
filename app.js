@@ -8,9 +8,10 @@ var routesapi=require('./app_api/routes/routes_api');
 
 var routes = require('./app_server/routes/routes');
 var users = require('./app_server/routes/users');
+var helmet = require('helmet');
 
 var app = express();
-
+app.use(helmet());
 // view engine setup
 app.set('views', path.join(__dirname, 'app_server/views'));
 app.set('view engine', 'jade');

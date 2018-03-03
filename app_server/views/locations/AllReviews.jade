@@ -5,6 +5,8 @@ block content
   #banner.page-header 
    .row
      .col-lg-6
+      p.bigtext #{message}
+      - if(content){
       h1 #{content.name}
       small &nbsp;#{content.tagline}
      .col-lg-6
@@ -54,6 +56,7 @@ block content
                           | &nbsp;
                          span.badge-pill.pull-right.badge-secondary  #{comment.author}
                          hr
+        -}
         
  //  .col-sm-4
  //    p.page-head Recent Reviews
