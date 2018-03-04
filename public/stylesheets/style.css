@@ -11,7 +11,8 @@ a {
   color: #00B7FF;
 }
 
-form {/*float:right;  made changes for New comment*/
+form.form-inline.my-2.my-lg-0.pull-right {/*float:right;  made changes for New comment*/
+	margin-top: 5px !important;  /*themeclass set it as important so overriding*/
 }
 /**************************************************************************************//*Navbar Layouts*/
 nav {opacity:0.8;

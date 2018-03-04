@@ -94,11 +94,7 @@ Request_Options = {
 					url: apiOptions.server+path,
 					method:"GET",
 					json: {},
-					qs: {
-							lng: 0,//not used
-							lat: 0,
-							maxDistance: 10
-						}
+					qs: {}
 				};
 
 request (Request_Options,(err,response,body)=>{

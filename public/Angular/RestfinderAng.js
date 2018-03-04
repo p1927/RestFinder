@@ -1,7 +1,7 @@
 angular.module('RestfinderAng',[]);
 
 
-
+////////////////////////////////////////////////////////////////////////////////////Controller All LOCATIONS
 var locationListCtrl= function ($scope,RestData,Geolocation) {
          $scope.message="Checking your location";
 
@@ -9,7 +9,8 @@ var locationListCtrl= function ($scope,RestData,Geolocation) {
 			{ $scope.message="Searching for places nearby!";
 			var lat = position.coords.latitude,
                 lng = position.coords.longitude;
-			   RestData.requestData(lng,lat,20000)
+                console.log(lat,lng);
+			   RestData.requestData(lng,lat,200000000000)
 			     .then( function (res){ 
 			     	$scope.data=res;
 			      if(res.data instanceof Array) 
@@ -33,12 +34,10 @@ var locationListCtrl= function ($scope,RestData,Geolocation) {
 				$scope.$apply(function() {
 				$scope.message = "Geolocation not supported by this browser."; 	});
 				};
-		Geolocation.getPosition($scope.getData,$scope.showError,$scope.noGeo);
+		 Geolocation.getPosition($scope.getData,$scope.showError,$scope.noGeo);
 };
 
- 
-
-var Geolocation =function (){
+ var Geolocation =function (){
 
  	var getPosition = function(Success,Error,Nosupport)
  	{
@@ -50,9 +49,13 @@ var Geolocation =function (){
  	 return {getPosition : getPosition};
  };
 
+////////////////////////////////////////////////////////////////////////////////////Controller SINGLE LOCATION
+var SinglelocationCtrl= function ($scope,RestData,Geolocation) {
 
 
-	 
+}	 
+
+
 ////////////////////////////////////////////////////////////////////////////////////FILTER FOR DISTANCE
 var isNumeric = function(n) {
 	  if (!isNaN(parseFloat(n))&& isFinite(n))
@@ -101,6 +104,7 @@ return {requestData: requestData};
 angular
 	.module('RestfinderAng')
 	.controller('locationListCtrl', locationListCtrl)
+	.controller('SinglelocationCtrl', SinglelocationCtrl)
 	.filter('filterdistance',filterdistance)
 	.directive('rating',rating)
 	.service('RestData',RestData)

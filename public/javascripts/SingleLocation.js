@@ -7,18 +7,20 @@ $.getScript("https://maps.googleapis.com/maps/api/js?key=AIzaSyAGX2KEn6RyrzyGAJ8
     // put your dependent JS here.
 
         if (navigator.geolocation) { //Checks if browser supports geolocation
-   navigator.geolocation.getCurrentPosition((position)=>{                                                              //This gets the
-     var latitude = position.coords.latitude;                    //users current
+   navigator.geolocation.getCurrentPosition((position)=>{           //This gets the users current location
+     var latitude = position.coords.latitude;                    
      var longitude = position.coords.longitude;  
-     var accuracy = position.coords.accuracy;               //location
+     var accuracy = position.coords.accuracy;               
      var coords = new google.maps.LatLng(latitude, longitude);
-      var destinationcoords = new google.maps.LatLng(dest[1], dest[0]); //Creates variable for map coordinates
+      var destinationcoords = new google.maps.LatLng(parseFloat(dest[1]), parseFloat(dest[0]));  //Creates variable for map coordinates
+   
      var directionsService = new google.maps.DirectionsService();
      var directionsDisplay = new google.maps.DirectionsRenderer();
+ 
      var mapOptions = //Sets map options
      {
        zoom: 15,  //Sets zoom level (0-21)
-       center: coords, //zoom in on users location
+       center: destinationcoords, //zoom in on users location
        mapTypeControl: true, //allows you to select map type eg. map or satellite
        navigationControlOptions:
        {
@@ -26,7 +28,7 @@ $.getScript("https://maps.googleapis.com/maps/api/js?key=AIzaSyAGX2KEn6RyrzyGAJ8
        },
        mapTypeId: google.maps.MapTypeId.ROADMAP //sets type of map Options:ROADMAP, SATELLITE, HYBRID, TERRIAN
      };
-     map = new google.maps.Map( /*creates Map variable*/ document.getElementById("frame"), mapOptions /*Creates a new map using the passed optional parameters in the mapOptions parameter.*/);
+     map = new google.maps.Map(  document.getElementById("frame"), mapOptions );//Creates a new map using the passed optional parameters in the mapOptions parameter.
      directionsDisplay.setMap(map);
      directionsDisplay.setPanel(document.getElementById('frame'));
      var request = {
@@ -34,9 +36,12 @@ $.getScript("https://maps.googleapis.com/maps/api/js?key=AIzaSyAGX2KEn6RyrzyGAJ8
        destination: destinationcoords,
        travelMode: google.maps.DirectionsTravelMode.DRIVING   };
 
-       directionsService.route(request, function (response, status) {
+       directionsService.route(request, function (response, status) { console.log(status);
        if (status == google.maps.DirectionsStatus.OK) {
-         directionsDisplay.setDirections(response);  }       });
+         directionsDisplay.setDirections(response);  } 
+
+      else {  }
+          });
                     
     },function error(msg){ alert('Please enable your GPS position future.'); },{maximumAge:600000, timeout:5000, enableHighAccuracy: true} ); 
  }

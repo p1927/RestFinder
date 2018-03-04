@@ -62,8 +62,8 @@ $(".postlocation").click(function(){
       if (value)
       {
            if (navigator.geolocation) { //Checks if browser supports geolocation
-   navigator.geolocation.getCurrentPosition((position)=>{                                                              //This gets the
-     var latitude = position.coords.latitude;                    //users current
+   navigator.geolocation.getCurrentPosition((position)=>{            //This gets the users current position
+     var latitude = position.coords.latitude;                    
      var longitude = position.coords.longitude; 
      window.location="../locations/distance?lng="+longitude+"&lat="+latitude+"&distance="+value; });}
           
@@ -71,5 +71,10 @@ $(".postlocation").click(function(){
       });
 
       $(".allocation").click(function(){
-     window.location="../locations";
+     window.location="../locations";  //All button
      });
+
+      $(document).ready(function(){
+      $("#filter").show();  //Show Filter textbar
+
+      });

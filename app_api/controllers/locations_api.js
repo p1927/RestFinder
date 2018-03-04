@@ -89,7 +89,16 @@ module.exports.AllDistanceLocations=function(req, res) {
 					openinghrs: doc.openinghrs,
 					_id: doc._id
 
-	 				});
+	 				 });
+
+
+	Loc.findById(doc._id).select('distance').exec((err,location)=>{location.distance=doc.distance; 
+																	location.save((err,location)=>{ 
+																		if (err) { console.log("Error API: Saving distance in Location: ",err);
+																		
+																		sendJsonResponse(res, 400, err);} 
+																	  });		
+																					});
 
 			});
 

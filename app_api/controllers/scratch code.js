@@ -164,3 +164,29 @@
 "telephone":"+91-9639217588"
 "reviews":[],
 "coords":[78.343997,17.424077] */
+
+
+/*
+	Loc.findById(doc._id).select('distance').exec((err,location)=>{location.distance=cordist; 
+																	location.save((err,location)=>{ 
+																		if (err) { console.log("Error API: Saving distance in Location: ",err);
+																		
+																		sendJsonResponse(res, 400, err);} 
+																	  });		
+																					});*/
+
+																						// statements
+/*	var cordist="";
+	if (doc.distance1>1000) { cordist= parseFloat(((doc.distance1)/1000).toFixed(1))+" km";}
+	else { cordist= parseInt(doc.distance1)+" m";}*/
+
+/*	|<br><br>
+       label.pull-right(for="filter") Filter results :   
+        input#filter(type="text", name="filter", ng-model="textFilter")*/
+
+            /*$("form.form-inline.my-2.my-lg-0").prepend(
+      "<input id='filter', class='form-control mr-sm-2', type='text', placeholder='Filter Results', aria-label='Filter', ng-model='textFilter'>"
+      );*/
+
+/*input#filter(type="text", name="filter", ng-model="textFilter")
+       input.form-control.mr-sm-2(type='search', placeholder='Search', aria-label='Search')*/

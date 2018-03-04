@@ -7,8 +7,7 @@ block content
      .col-lg-6
       h1 RestFinder
       small &nbsp;Find places to work with wifi near you!
-      label(for="filter") Filter results :   
-       input#filter(type="text", name="filter", ng-model="textFilter")
+      
      .col-lg-6
        button.pull-right.btn.postlocation
         img(src='/images/contract.png', height='30px', width='30px')
@@ -16,6 +15,7 @@ block content
        button.pull-right.btn.findbylocation
         img(src="/images/find.png" height="30px" width="30px")
        input.distance.pull-right(type='text', name='distance', size='15px',required="required", placeholder=" Meters (m)")
+       
   #content.page-header
    .row
     .col-xs-12.col-sm-8(ng-controller='locationListCtrl')
