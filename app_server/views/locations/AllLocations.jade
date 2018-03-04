@@ -19,11 +19,11 @@ block content
   #content.page-header
    .row
     .col-xs-12.col-sm-8(ng-controller='locationListCtrl')
-      p.bigtext.message {{data.message}}
+      p.bigtext.message {{message}}
         .boxzoom(ng-repeat="location in data.locations | filter : textFilter")
           a(href="/locations/{{location._id}}/") 
             .page-head {{location.name}}
-             p.pull-right(rating, avgrating="location.avgrating",size=25)
+             p.pull-right(avgrating="location.avgrating",size=25,rating)
 
           p.address {{location.address}}
           p

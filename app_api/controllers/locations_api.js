@@ -103,7 +103,7 @@ module.exports.AllDistanceLocations=function(req, res) {
 																					});*/
 			});
 
-	if (locations[0]) sendJsonResponse(res,404,new Error("dsdf"));	//sendJsonResponse(res,200,locations);
+	if (locations[0])sendJsonResponse(res,200,locations);
 	else 	sendJsonResponse(res,200,[]);
         }
     );

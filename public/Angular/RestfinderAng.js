@@ -9,17 +9,19 @@ $scope.myInput="world!";
 
 
 var locationListCtrl= function ($scope,RestData) {
+
  $scope.message="Searching for places nearby!";
    RestData
      .then( function (res){ 
      	console.log(res);
      	$scope.data=res;
      	if(res.data instanceof Array) 
-     {	if (res.data.length)
-     	{console.log(2);
+     {		
+     	if (res.data.length)
+     	{
      	     	$scope.data.locations=res.data;
-     	          $scope.message="";}
-     	          else $scope.data.message="No nearby places found.";}
+     	          $scope.message=""; }
+     	          else $scope.message="No nearby places found."; }
 
       else $scope.message="API Lookup Error";
 
