@@ -135,3 +135,32 @@
 
 
            "locationmap":"https://www.google.com/maps/embed/v1/directions?origin=8-266/7, ISB Rd, Financial District, Nanakram Guda, Hyderabad, Telangana 500032&destination=Barbeque Nation, Nanakramaguda Road, Beside Wipro Lake, Financial District, Gachibowli, Hyderabad&key=AIzaSyBpOiiNEJ6Lmiqe1rBc4rY_ZPXPo2OzthU",
+
+            /*[{"_id":"5a9652ea2ffd36391ce572f5",
+"name":"Barbeque Nation","avgrating":2,
+"distance":15800,
+"address":"Barbeque Nation, Nanakramaguda Road, Beside Wipro Lake, Financial District, Gachibowli, Hyderabad",
+"facilities":["Cold Drinks","Zuchinni","Cappuchinos"]},{
+
+"_id":"5a8fc0c042781261fc958882",
+"name":"BillBay","avgrating":4,
+"distance":12800,
+"address":"Billbay, Nanakramaguda Road, Beside Wipro Lake, Financial District, Gachibowli, Hyderabad",
+"facilities":["Cold Drinks","Zuchinni","Cappuchinos"]*/
+
+
+	
+
+/*"_id":"5a9652ea2ffd36391ce572f5",
+"name":"Barbeque Nation",
+"tagline":"Find places to work with wifi near you!",
+"avgrating":2,
+"distance":"15.8 km",
+"address":"Barbeque Nation, Nanakramaguda Road, Beside Wipro Lake, Financial District, Gachibowli, Hyderabad",
+"openinghrs":["Monday - Friday : 7:00am - 7:00pm","Saturday : 8:00am - 5:00pm","Sunday : closed"],
+"facilities":["Cold Drinks","Zuchinni","Cappuchinos"],
+"email":"99pratyush@gmail.com",
+"website":"www.google.com",
+"telephone":"+91-9639217588"
+"reviews":[],
+"coords":[78.343997,17.424077] */

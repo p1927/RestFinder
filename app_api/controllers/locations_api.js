@@ -78,10 +78,7 @@ module.exports.AllDistanceLocations=function(req, res) {
     if(err){sendJsonResponse(res,404,err); return;}
 	var locations=[];
 	results.forEach( function(doc) { 
-	// statements
-/*	var cordist="";
-	if (doc.distance1>1000) { cordist= parseFloat(((doc.distance1)/1000).toFixed(1))+" km";}
-	else { cordist= parseInt(doc.distance1)+" m";}*/
+
 
 	locations.push({
 					distance:doc.distance,
@@ -93,14 +90,7 @@ module.exports.AllDistanceLocations=function(req, res) {
 					_id: doc._id
 
 	 				});
-/*
-	Loc.findById(doc._id).select('distance').exec((err,location)=>{location.distance=cordist; 
-																	location.save((err,location)=>{ 
-																		if (err) { console.log("Error API: Saving distance in Location: ",err);
-																		
-																		sendJsonResponse(res, 400, err);} 
-																	  });		
-																					});*/
+
 			});
 
 	if (locations[0])sendJsonResponse(res,200,locations);

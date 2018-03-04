@@ -32,7 +32,7 @@ var locationschema=new mongoose.Schema({
 name: 			{ type: String, required: true},
 tagline: 		{ type: String},
 avgrating: 		{ type: Number, "default":0, min:0,max:5},
-distance: 		{ type: String},
+distance: 		{ type: Number},
 address:  		{ type: String, required: true},
 openinghrs: 	{ type: [String],"default": 'NA'},
 facilities: 	{ type: [String],"default": 'NA'},
