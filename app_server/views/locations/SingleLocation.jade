@@ -1,7 +1,7 @@
 extends layout
 
 block content
- #opacity
+ #opacity(ng-controller="SinglelocationCtrl")
   #banner.page-header
    .row
      .col-lg-6
@@ -13,7 +13,7 @@ block content
        p.pull-right.aligncorrection
              +outputRating(content.avgrating,40)
        |<br><br><br>
-       h2.pull-right  #{content.distance}
+       h2.pull-right  {{#{content.distance}| filterdistance}}
   #content.page-header
    .row
     .col-xs-12.col-sm-5
@@ -37,7 +37,7 @@ block content
     .col-xs-12.col-sm-7
       p.page Location
       #frame.page
-         //iframe(src='#{content.locationmap}', height='100%', width='100%', allowfullscreen='')
+        
     hr
  .opacitypanel 
       p.page-head.panel 
@@ -80,7 +80,7 @@ block content
                   
                   | &nbsp;
                  button.btn.btn-secondary.pull-right(type='button')  #{review.author}
-                 hr
+                 
         -}
  script.
   var dest=[#{content.coords[0]},#{content.coords[1]}];      

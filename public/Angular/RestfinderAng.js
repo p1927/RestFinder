@@ -2,7 +2,7 @@ angular.module('RestfinderAng',[]);
 
 
 ////////////////////////////////////////////////////////////////////////////////////Controller All LOCATIONS
-var locationListCtrl= function ($scope,RestData,Geolocation) {
+var locationListCtrl= function ($scope,LocationListData,Geolocation) {
          $scope.message="Checking your location";
 
 		 $scope.getData= function (position)                           //defining functions to be passed
@@ -10,7 +10,7 @@ var locationListCtrl= function ($scope,RestData,Geolocation) {
 			var lat = position.coords.latitude,
                 lng = position.coords.longitude;
                 console.log(lat,lng);
-			   RestData.requestData(lng,lat,200000000000)
+			   LocationListData.requestData(lng,lat,2000000)
 			     .then( function (res){ 
 			     	$scope.data=res;
 			      if(res.data instanceof Array) 
@@ -50,10 +50,11 @@ var locationListCtrl= function ($scope,RestData,Geolocation) {
  };
 
 ////////////////////////////////////////////////////////////////////////////////////Controller SINGLE LOCATION
-var SinglelocationCtrl= function ($scope,RestData,Geolocation) {
+var SinglelocationCtrl= function ($scope,SingleLocationData,Geolocation) {
 
 
-}	 
+
+}; 
 
 
 ////////////////////////////////////////////////////////////////////////////////////FILTER FOR DISTANCE
@@ -89,17 +90,27 @@ var rating=function () {
                size: '=size' },
 	templateUrl: '/Angular/rating.html'};
  };
-/////////////////////////////////////////////////////////////////////////////////REQUEST FOR DATA LOCATION API
-var RestData=function ($http){
+/////////////////////////////////////////////////////////////////////////////////REQUEST FOR LOCATION DATA LIST API
+var LocationListData=function ($http){
 
  var requestData= function (lng,lat,distance)
-{  return  $http.get("/api/locations/distance?lat="+lat+"&lng="+lng+"&distance="+distance);}; //this can be manipulated to crash server.
-																								// novalidation present in API
+ {  return  $http.get("/api/locations/distance?lat="+lat+"&lng="+lng+"&distance="+distance);}; //this can be manipulated to crash server.
+																								// no validation present in API
 
-return {requestData: requestData};
+ return {requestData: requestData};
 
  };
 
+/////////////////////////////////////////////////////////////////////////////////REQUEST FOR DATA SINGLE LOCATION API
+var SingleLocationData=function ($http){
+
+ var requestData= function (locationid)
+ {  return  $http.get("/api/locations/"+locationid+"/");};                               //this can be manipulated to crash server.
+																								// no validation present in API
+
+ return {requestData: requestData};
+
+ };
 //////////////////////////////////////////////////////////////////////////////////////FILTER FOR DISTANCE
 angular
 	.module('RestfinderAng')
@@ -107,7 +118,8 @@ angular
 	.controller('SinglelocationCtrl', SinglelocationCtrl)
 	.filter('filterdistance',filterdistance)
 	.directive('rating',rating)
-	.service('RestData',RestData)
+	.service('LocationListData',LocationListData)
+	.service('SingleLocationData',SingleLocationData)
 	.service('Geolocation',Geolocation);
 
 

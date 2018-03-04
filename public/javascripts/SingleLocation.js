@@ -40,7 +40,7 @@ $.getScript("https://maps.googleapis.com/maps/api/js?key=AIzaSyAGX2KEn6RyrzyGAJ8
        if (status == google.maps.DirectionsStatus.OK) {
          directionsDisplay.setDirections(response);  } 
 
-      else {  }
+      else { $("#directionmessage").text(">> Couldn't fetch directions, its too far!"); }
           });
                     
     },function error(msg){ alert('Please enable your GPS position future.'); },{maximumAge:600000, timeout:5000, enableHighAccuracy: true} ); 

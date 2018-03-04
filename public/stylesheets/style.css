@@ -145,7 +145,8 @@ font-size: 15px !important;
  padding-top: 0px;
  	display:inline-block;
     width:100%;
-    background: rgba(1, 1, 0, 0.8);
+    background: rgba(251, 251, 250, 0.1);
+    border-radius: 5px;
     
    
  }

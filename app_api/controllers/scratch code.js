@@ -190,3 +190,22 @@
 
 /*input#filter(type="text", name="filter", ng-model="textFilter")
        input.form-control.mr-sm-2(type='search', placeholder='Search', aria-label='Search')*/
+
+       
+//            - each comment in review.comments
+//                .row
+ //                .col-xs-12
+ //                 .boxzoom1
+ //                   .comment  +formatDate(comment.commentdate)
+  //                  .comment #{comment.comment}
+ //                   p.comment
+ //                      span.badge-pill.badge-info Reply 
+ //                       | &nbsp; 
+ //                       span.badge-default.badge-pill  #{comment.replynos}
+ //                       | &nbsp;
+ //                      span.badge-pill.badge-info Upvote  
+ //                       | &nbsp; 
+ //                       span.badge-default.badge-pill  #{comment.upvotes}
+ //                       | &nbsp;
+ //                      span.badge-pill.pull-right.badge-secondary  #{comment.author}
+ //                      hr
