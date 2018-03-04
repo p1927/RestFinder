@@ -68,7 +68,7 @@ module.exports.AllDistanceLocations=function(req, res) {
                 '$geoNear': {
                     'near': { "type" : "Point", "coordinates" : [ lng, lat] },
                     'spherical': true,
-                    'distanceField': 'distance1',
+                    'distanceField': 'distance',
                     'maxDistance': maxDis,
                     'limit':10
                 }
@@ -79,12 +79,12 @@ module.exports.AllDistanceLocations=function(req, res) {
 	var locations=[];
 	results.forEach( function(doc) { 
 	// statements
-	var cordist="";
+/*	var cordist="";
 	if (doc.distance1>1000) { cordist= parseFloat(((doc.distance1)/1000).toFixed(1))+" km";}
-	else { cordist= parseInt(doc.distance1)+" m";}
+	else { cordist= parseInt(doc.distance1)+" m";}*/
 
 	locations.push({
-					distance:cordist,
+					distance:doc.distance,
 					name: doc.name,
 					address: doc.address,
 					avgrating: doc.avgrating,
@@ -93,17 +93,17 @@ module.exports.AllDistanceLocations=function(req, res) {
 					_id: doc._id
 
 	 				});
-
+/*
 	Loc.findById(doc._id).select('distance').exec((err,location)=>{location.distance=cordist; 
 																	location.save((err,location)=>{ 
 																		if (err) { console.log("Error API: Saving distance in Location: ",err);
 																		
 																		sendJsonResponse(res, 400, err);} 
 																	  });		
-																					});
+																					});*/
 			});
 
-	if (locations[0]) 	sendJsonResponse(res,200,locations);
+	if (locations[0]) sendJsonResponse(res,404,new Error("dsdf"));	//sendJsonResponse(res,200,locations);
 	else 	sendJsonResponse(res,200,[]);
         }
     );

@@ -132,3 +132,6 @@
            a.dropdown-item(href='/locations/distance') Distance Location
            .dropdown-divider
            a.dropdown-item(href='/locations/123/review') All Reviews*/
+
+
+           "locationmap":"https://www.google.com/maps/embed/v1/directions?origin=8-266/7, ISB Rd, Financial District, Nanakram Guda, Hyderabad, Telangana 500032&destination=Barbeque Nation, Nanakramaguda Road, Beside Wipro Lake, Financial District, Gachibowli, Hyderabad&key=AIzaSyBpOiiNEJ6Lmiqe1rBc4rY_ZPXPo2OzthU",

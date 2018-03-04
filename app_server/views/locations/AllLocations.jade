@@ -7,6 +7,8 @@ block content
      .col-lg-6
       h1 RestFinder
       small &nbsp;Find places to work with wifi near you!
+      label(for="filter") Filter results :   
+       input#filter(type="text", name="filter", ng-model="textFilter")
      .col-lg-6
        button.pull-right.btn.postlocation
         img(src='/images/contract.png', height='30px', width='30px')
@@ -16,21 +18,19 @@ block content
        input.distance.pull-right(type='text', name='distance', size='15px',required="required", placeholder=" Meters (m)")
   #content.page-header
    .row
-    .col-xs-12.col-sm-8
-      p.bigtext.message !{message}
-      each place in locations
-        .boxzoom
-          a(href="/locations/#{place._id}/") 
-            .page-head #{place.name}
-              p.pull-right
-               +outputRating(place.avgrating,25)             
-          p.address #{place.address}
+    .col-xs-12.col-sm-8(ng-controller='locationListCtrl')
+      p.bigtext.message {{data.message}}
+        .boxzoom(ng-repeat="location in data.locations | filter : textFilter")
+          a(href="/locations/{{location._id}}/") 
+            .page-head {{location.name}}
+             p.pull-right(rating, avgrating="location.avgrating",size=25)
+
+          p.address {{location.address}}
           p
-             each facility in place.facilities
-                 button.btn.btn-light(type='button')  #{facility}
-                 | &nbsp;
-            
-             button.btn.btn-danger.pull-right(type='button')  #{place.distance}
+            span(ng-repeat="facil in location.facilities")
+             button.btn.btn-light(type='button')  {{facil}} 
+             |&nbsp   
+            button.btn.btn-danger.pull-right(type='button')  {{location.distance | filterdistance}}
 
      
 
