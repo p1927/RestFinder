@@ -50,7 +50,7 @@ var locationListCtrl= function ($scope,LocationListData,Geolocation) {
  };
 
 ////////////////////////////////////////////////////////////////////////////////////Controller SINGLE LOCATION
-var SinglelocationCtrl= function ($scope,SingleLocationData,Geolocation) {
+var SinglelocationCtrl= function ($scope,Geolocation) {
 
 
 
@@ -102,7 +102,7 @@ var LocationListData=function ($http){
  };
 
 /////////////////////////////////////////////////////////////////////////////////REQUEST FOR DATA SINGLE LOCATION API
-var SingleLocationData=function ($http){
+/*var SingleLocationData=function ($http){
 
  var requestData= function (locationid)
  {  return  $http.get("/api/locations/"+locationid+"/");};                               //this can be manipulated to crash server.
@@ -110,7 +110,7 @@ var SingleLocationData=function ($http){
 
  return {requestData: requestData};
 
- };
+ };*/
 //////////////////////////////////////////////////////////////////////////////////////FILTER FOR DISTANCE
 angular
 	.module('RestfinderAng')
@@ -119,7 +119,7 @@ angular
 	.filter('filterdistance',filterdistance)
 	.directive('rating',rating)
 	.service('LocationListData',LocationListData)
-	.service('SingleLocationData',SingleLocationData)
+	//.service('SingleLocationData',SingleLocationData)
 	.service('Geolocation',Geolocation);
 
 
