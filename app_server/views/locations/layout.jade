@@ -1,14 +1,19 @@
 doctype html
-html(ng-app='RestfinderAng')
+html(ng-app='Restfinder')
   head
     meta(name='viewport',content='width-device-width, initial-scale=1.0')
     title= title
     link(rel='stylesheet', href='/stylesheets/style.css')
     link(rel='stylesheet', href='/stylesheets/bootstrap.css')
     link(rel='stylesheet', href='/stylesheets/amelia.bootstrap.css')
-    include ../_includes/sharedHTMLfunc
-    script(src='/Angular/angular.min.js')
-    script(src='/Angular/RestfinderAng.js')
+    script(src='/lib/angular.min.js')
+    script(src='/lib/angular-route.js')
+    script(src='/app.js')
+    script(src='/locations/locations.controller.js')
+    script(src='/common/services/Geolocation.service.js')
+    script(src='/common/services/LocationListData.service.js')
+    script(src='/common/filters/formatDistance.js')
+    script(src='/common/directives/RatingStars/ratingStars.js')
     script(src='/javascripts/jquery-3.3.1.slim.min.js')
     script(src='/javascripts/bootstrap.min.js')
     script(src='/javascripts/jquery-3.1.0.js')
@@ -39,7 +44,8 @@ html(ng-app='RestfinderAng')
        input.form-control.mr-sm-2(type='search', placeholder='Search', aria-label='Search')
        button.btn.btn-outline-success.my-2.my-sm-0(type='submit') Search
    .box
-     block content
+     div(ng-view)
+      block content
   footer
     .row
       .col-xs-12

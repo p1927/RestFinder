@@ -9,8 +9,12 @@ var About=function(req, res, next) {
 };
 
 
+/***********************************Angular controller*********************************************************/
 
+module.exports.angularApp= function (req,res) {
+res.render('locations/layout', { title: 'Home RestFinder' });
 
+};
 
 
 

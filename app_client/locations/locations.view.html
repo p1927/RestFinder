@@ -1,0 +1,39 @@
+<div id="opacity">
+  <div id="banner" class="page-header">
+    <div class="row">
+      <div class="col-lg-6">
+        <h1>RestFinder</h1><small>&nbsp;Find places to work with wifi near you!</small>
+      </div>
+      <div class="col-lg-6">
+        <button class="pull-right btn postlocation"><img src="/images/contract.png" height="30px" width="30px"/></button>
+        <button style="width:56px;" class="pull-right btn allocation">ALL</button>
+        <button class="pull-right btn findbylocation"><img src="/images/find.png" height="30px" width="30px"/></button>
+        <input type="text" name="distance" size="15px" required="required" placeholder=" Meters (m)" class="distance pull-right"/>
+      </div>
+    </div>
+  </div>
+
+<div id="content" class="page-header">
+  <div class="row">
+    <div class="col-xs-12 col-sm-8">
+      <p class="bigtext message">{{vm.message}}
+        <div ng-repeat="location in vm.data.locations | filter : textFilter" class="boxzoom"><a href="/locations/{{location._id}}/">
+            <div class="page-head">{{location.name}}
+              <p avgrating="location.avgrating" size="25" rating="rating" class="pull-right"></p>
+            </div></a>
+          <p class="address">{{location.address}}</p>
+          <p><span ng-repeat="facil in location.facilities">
+              <button type="button" class="btn btn-light"> {{facil}} </button>&nbsp   </span>
+            <button type="button" class="btn btn-danger pull-right"> {{location.distance | filterdistance}}</button>
+          </p>
+        </div>
+      </p>
+    </div>
+    <div class="col-xs-12 col-sm-4">
+      <p class="page-header">RestFinder helps you find places to rest when out and about.</p>
+      <p class="page">This simple, easy, fast, and fun food finder works worldwide.</p>
+    </div>
+  </div>
+</div>
+<script src="/javascripts/AllLocation.js"></script>
+</div>

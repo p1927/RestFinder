@@ -209,3 +209,8 @@
  //                       | &nbsp;
  //                      span.badge-pill.pull-right.badge-secondary  #{comment.author}
  //                      hr
+
+script(src='/lib/angular-route.min.js.map')
+    script(src='/lib/angular.min.js.map')
+
+      // script(src='/common/directives/RatingStars/ratingStars.js')

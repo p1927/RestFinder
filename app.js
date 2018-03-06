@@ -24,6 +24,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 require('./app_api/models/db');
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, 'app_client')));
 
 app.use('/', routes);
 app.use('/api',routesapi);
