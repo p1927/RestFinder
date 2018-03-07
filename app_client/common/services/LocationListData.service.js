@@ -2,16 +2,23 @@
 
 angular
 	.module('Restfinder')
-	.service('LocationListData',LocationListData);
+	.service('LocationData',LocationData);
 
-function LocationListData ($http){
 
- var requestData= function (lng,lat,distance)
+function LocationData ($http){
+
+ var ListData= function (lng,lat,distance)
  {  return  $http.get("/api/locations/distance?lat="+lat+"&lng="+lng+"&distance="+distance);}; //this can be manipulated to crash server.
-																								// no validation present in API
 
- return {requestData: requestData};
+ var SingleLocationData= function (locationid)
+ {  return  $http.get("/api/locations/"+locationid);};																								// no validation present in API
+
+ return {ListData: ListData,
+         SingleLocationData : SingleLocationData };
 
  };
+
+
+
 
  })();

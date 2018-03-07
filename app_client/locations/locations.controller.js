@@ -3,7 +3,7 @@
 angular.module('Restfinder')
        .controller('locationListCtrl', locationListCtrl);
 
-function locationListCtrl ($scope,LocationListData,Geolocation) {
+function locationListCtrl ($scope,LocationData,Geolocation) {
          var vm = this;
          
          vm.message="Checking your location";
@@ -13,7 +13,7 @@ function locationListCtrl ($scope,LocationListData,Geolocation) {
 			var lat = position.coords.latitude,
                 lng = position.coords.longitude;
                // console.log(lat,lng);
-			   LocationListData.requestData(lng,lat,2000000)
+			   LocationData.ListData(lng,lat,2000000)
 			     .then( function (res){ 
 			     	vm.data=res;
 			     	
@@ -40,6 +40,6 @@ function locationListCtrl ($scope,LocationListData,Geolocation) {
 				};
 		 Geolocation.getPosition(vm.getData,vm.showError,vm.noGeo);
 		 
-};
+}
 
 })();

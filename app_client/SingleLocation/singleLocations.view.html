@@ -1,0 +1,102 @@
+<div id="opacity">
+  <div id="banner" class="page-header">
+    <div class="row">
+      <div class="col-lg-6">
+        <p class="bigtext">{{vm.message}}</p>
+      </div>
+    </div>
+    <div class="row" ng-if="vm.location">
+      <div class="col-lg-6">
+         <h1>{{vm.location.name}}</h1><small>&nbsp;{{vm.location.tagline}}</small>
+      </div>
+      <div class="col-lg-6">
+        <p class="pull-right aligncorrection" avgrating="vm.location.avgrating" size="40" rating="rating"></p>
+        <br>
+        <br>
+        <br>
+        <h2 class="pull-right"> {{vm.location.distance| filterdistance}}</h2>
+      </div>
+    </div>
+  </div>
+  <div id="content" class="page-header" ng-if="vm.location">
+    <div class="row">
+      <div class="col-xs-12 col-sm-5">
+        <p class="page">Address</p>
+        <div class="page"> {{vm.location.address}}
+          <hr/>
+        </div>
+        <p class="page">Opening hours</p>
+        <div class="page" ng-repeat="opening in vm.location.openinghrs">
+          <p>{{opening}}</p>
+        </div>
+        <hr/>
+        <p class="page">Facilities</p>
+        <span ng-repeat="facility in vm.location.facilities">
+          <button type="button" class="btn btn-light"> {{facility}}</button>&nbsp;
+        </span>
+        <hr/>
+        <p class="page"> Contact
+          <p>E-mail : {{vm.location.email}}</p>
+          <p>Website  : {{vm.location.website}}</p>
+          <p>Telephone No: {{vm.location.telephone}}</p>
+        </p>
+      </div>
+      <div class="col-xs-12 col-sm-7">
+        <p class="page">Location</p>
+        <div id="frame" class="page"></div>
+      </div>
+      <hr/>
+    </div>
+  </div>
+</div>
+<div class="opacitypanel" ng-if="vm.location">
+  <p class="page-head panel"> 
+    <span>
+      <a href="../{{vm.location._id}}/review/new?name={{vm.location.name}}">
+        <button class="btn"><img src="/images/contract.png" height="30px" width="30px"/></button>
+      </a>
+    </span>&nbsp; &emsp;
+    <a href="/locations/{{vm.location._id}}/review">Customer Reviews </a>
+  </p>
+  <div class="row reviews" ng-repeat="review in vm.location.reviews">
+    <div class="col-xs-12">
+      <div class="boxzoom1"> 
+        <a href="/locations/{{vm.location._id}}/review">
+          <div class="page-head">{{review.reviewtitle}}
+            <p class="pull-right" avgrating="review.rating" size="25" rating="rating"></p>
+          </div>
+        </a>
+        <p> {{review.reviewdate | date: "dd MMMM yyyy"}}</p>
+        <p class="review">{{review.review}}</p>
+        <p>
+          <button type="button" class="btn btn-light">
+            Comment
+            &nbsp; <span class="badge badge-light"> {{review.commentnos}}</span>
+          </button>
+          &nbsp;
+          <button type="button" class="btn btn-success">
+             Upvote
+            &nbsp; <span class="badge badge-default"> {{review.upvotes}}</span>
+          </button>
+            &nbsp;
+          <button class="btn changes">
+            <span class="confirm"> 
+              <img src="/images/bin.png" height="30px" width="30px"/>
+                <div class="badge badgeconfirmdelete">
+                  <span id="delete{{review._id}}" class="correct"><img src="/images/correct.png" height="30px" width="30px"/></span>
+                  &nbsp;
+                  <span class="cancel"><img src="/images/cancel.png" height="30px" width="30px"/>
+                  </span>
+                </div>
+              </span>
+          </button>&nbsp;
+          <button type="button" class="btn btn-secondary pull-right"> {{review.author}}</button>
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+  var dest=[{{vm.location.coords[0]}},{{vm.location.coords[1]}}];      
+</script>
+<script src="/javascripts/SingleLocation.js"></script>

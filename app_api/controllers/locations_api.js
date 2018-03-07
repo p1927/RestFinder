@@ -141,6 +141,8 @@ module.exports.SingleLocation=function(req, res) {
 			{sendJsonResponse(res,200,location);}
 	});}
  else {sendJsonResponse(res,404,{"message":"API: Invalid Address"});}
+
+
 };
 //-----------------------------------------------------------------------------------//Recent Reviews to added
 module.exports.AllReviews=function(req, res) {
