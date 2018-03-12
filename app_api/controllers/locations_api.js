@@ -61,6 +61,7 @@ module.exports.AllDistanceLocations=function(req, res) {
 	var lng=parseFloat(req.query.lng);
 	var lat=parseFloat(req.query.lat);
 	var maxDis=parseFloat(req.query.distance);
+	
 
 	Loc.aggregate(
         [
@@ -156,7 +157,8 @@ module.exports.AllReviews=function(req, res) {
 				{console.log("Error API: AllReviews: ",err);
 					sendJsonResponse(res,200,err); return;}
 			else
-				{sendJsonResponse(res,200,reviews);}
+				{ console.log(reviews);
+					sendJsonResponse(res,200,reviews);}
 		});}
  else {sendJsonResponse(res,404,{"message":"API: Invalid Address"});}
 
@@ -298,7 +300,7 @@ module.exports.AddReview=function(req, res) {
 };
 //====================================================================================
 module.exports.AddComment=function(req, res) {
-
+ console.log(req.body);
  if(req.params&&req.params.locationid&&req.params.reviewid)
  {
 
@@ -487,7 +489,8 @@ module.exports.Delete_SingleReviews=function(req, res) {
 	.select('reviews')
 	.exec(function (err,location){
 
-						if (!location) { sendJsonResponse(res, 200,  {"message":"API: Location Data not found"});}
+						if (!location) { 
+							sendJsonResponse(res, 200,  {"message":"API: Location Data not found"});}
 						  else if (err) {sendJsonResponse(res, 400, err);	} 
 							else {
  if(location.reviews.id(req.params.reviewid))
@@ -496,6 +499,7 @@ module.exports.Delete_SingleReviews=function(req, res) {
 																	if (err) { sendJsonResponse(res, 400, err); }
 																		
 																	else { updateAverageRating(location._id);
+																		
 																		sendJsonResponse(res, 200,{"message":"API: Removed Review Data"}); }   });}
 										else  {sendJsonResponse(res,404,{"message":"API: Invalid Address, Invalid ReviewID"});}
 								 } 
@@ -540,9 +544,12 @@ module.exports.Delete_SingleComment=function(req, res) {
  Loc.findById(req.params.locationid)
 	.select('reviews')
 	.exec(function (err,location){
-							if (!location) { sendJsonResponse(res, 200,  {"message":"API: Location Data not found"});}
-							else  if (!location.reviews.id(req.params.reviewid)) { sendJsonResponse(res, 200,  {"message":"API: Review Data not found"});}
-							else if (err) {	sendJsonResponse(res, 400, err); } 
+							if (!location) { 
+							 sendJsonResponse(res, 200,  {"message":"API: Location Data not found"});}
+							else  if (!location.reviews.id(req.params.reviewid)) { 
+								sendJsonResponse(res, 200,  {"message":"API: Review Data not found"});}
+							else if (err) {	
+								sendJsonResponse(res, 400, err); } 
 							else {
  if(location.reviews.id(req.params.reviewid).comments.id(req.params.commentid))
 							{location.reviews.id(req.params.reviewid).comments.id(req.params.commentid).remove();
@@ -622,6 +629,47 @@ module.exports.Delete_SingleReply=function(req, res) {
   else  {sendJsonResponse(res,404,{"message":"API: Invalid Address, provide locationID / ReviewID/ CommentID/ ReplyID"});}
  
 };
+
+//-----------------------------------------------------------------------------------------------Update Likes--------------------------
+module.exports.UpdateUpvotes=function(req, res) {  // user name pass schema link with like button
+
+if(!req.body.increment){sendJsonResponse(res, 404, { "message":"API: No increment"}); 	return; };
+
+ var updateentity;
+ Loc
+	.findById(req.params.locationid)
+	.select('reviews')
+	.exec( function(err, location) { 
+					var thisReview;
+					
+				     if (!location) { sendJsonResponse(res, 404, { "message":"API: Location ID Not found"}); 	return; } 
+				     else if (err) { sendJsonResponse(res, 400, err); return; }
+					if (location.reviews && location.reviews.length > 0) { 
+							thisReview = location.reviews.id(req.params.reviewid);
+							if (!thisReview) { 	sendJsonResponse(res, 404, { "message":"API: Reviewid not found" }); return; 	} 
+							else { updateentity=thisReview;
+                            if (req.params.commentid&&thisReview.comments && thisReview.comments.length > 0) {
+							thisComment = thisReview.comments.id(req.params.commentid);
+							if (!thisComment) { 	sendJsonResponse(res, 404, { "message":"API: Commentid not found" }); return;  }
+                             else  updateentity=thisComment; }
+
+
+								if(req.body.increment==true)
+							    updateentity.upvotes++;	
+							    else updateentity.upvotes--;	
+			
+							location.save(function(err, location) { 
+																	if (err) {
+																	sendJsonResponse(res, 404, err); } 
+																	else {
+																	console.log("success");
+																	sendJsonResponse(res, 200, { "message":"API: Upvotes updated" }); } });
+						        } 
+				      }
+				    else { sendJsonResponse(res, 404, { "message":"API: No review to update" }); }
+       });
+};
+
 //-------------------------------------------------------------------------------------------------------------------------
 
 var sendJsonResponse=function (res,status,content) {

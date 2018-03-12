@@ -1,4 +1,5 @@
-<div id="opacity">
+
+<div id="opacity" class="SingleLocation">
   <div id="banner" class="page-header">
     <div class="row">
       <div class="col-lg-6">
@@ -13,6 +14,7 @@
         <p class="pull-right aligncorrection" avgrating="vm.location.avgrating" size="40" rating="rating"></p>
         <br>
         <br>
+        <div id="coords" style="display:none" >{{vm.location.coords}}</div>
         <br>
         <h2 class="pull-right"> {{vm.location.distance| filterdistance}}</h2>
       </div>
@@ -32,7 +34,7 @@
         <hr/>
         <p class="page">Facilities</p>
         <span ng-repeat="facility in vm.location.facilities">
-          <button type="button" class="btn btn-light"> {{facility}}</button>&nbsp;
+          <span class="label label-warning" style="font-size: 1.1em;"> {{facility}}</span>&nbsp;
         </span>
         <hr/>
         <p class="page"> Contact
@@ -50,18 +52,18 @@
   </div>
 </div>
 <div class="opacitypanel" ng-if="vm.location">
-  <p class="page-head panel"> 
+  <p class="page-head"> 
     <span>
-      <a href="../{{vm.location._id}}/review/new?name={{vm.location.name}}">
-        <button class="btn"><img src="/images/contract.png" height="30px" width="30px"/></button>
-      </a>
+     
+        <button class="btn" ng-click="vm.AddReview()"><img src="/images/contract.png" height="30px" width="30px"/></button>
+     
     </span>&nbsp; &emsp;
     <a href="/locations/{{vm.location._id}}/review">Customer Reviews </a>
   </p>
   <div class="row reviews" ng-repeat="review in vm.location.reviews">
     <div class="col-xs-12">
       <div class="boxzoom1"> 
-        <a href="/locations/{{vm.location._id}}/review">
+        <a href="/locations/{{vm.location._id}}/reviews">
           <div class="page-head">{{review.reviewtitle}}
             <p class="pull-right" avgrating="review.rating" size="25" rating="rating"></p>
           </div>
@@ -80,13 +82,14 @@
           </button>
             &nbsp;
           <button class="btn changes">
-            <span class="confirm"> 
+            <span class="confirm" ng-click="vm.deleteoptions($event)"> 
               <img src="/images/bin.png" height="30px" width="30px"/>
-                <div class="badge badgeconfirmdelete">
-                  <span id="delete{{review._id}}" class="correct"><img src="/images/correct.png" height="30px" width="30px"/></span>
+                <div class="badge badgeconfirmdelete" style="display: none;">
+                  <span id="delete{{review._id}}" class="correct" ng-click="vm.deleteconfirm($event)"><img src="/images/correct.png" height="30px" width="30px"/></span>
                   &nbsp;
-                  <span class="cancel"><img src="/images/cancel.png" height="30px" width="30px"/>
+                  <span class="cancel" ng-click="vm.deletecancel($event)"><img src="/images/cancel.png" height="30px" width="30px"/>
                   </span>
+                 
                 </div>
               </span>
           </button>&nbsp;
@@ -96,7 +99,8 @@
     </div>
   </div>
 </div>
-<script>
-  var dest=[{{vm.location.coords[0]}},{{vm.location.coords[1]}}];      
-</script>
-<script src="/javascripts/SingleLocation.js"></script>
+ <script src="/javascripts/SingleLocation.js"></script>
+
+
+
+

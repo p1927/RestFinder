@@ -24,6 +24,8 @@ router.post('/locations/:locationid/:reviewid/:commentid/reply',LocationCtrl.Add
 /* PUT Location pages. */
 router.put('/locations/:locationid',LocationCtrl.EditLocation);
 router.put('/locations/:locationid/:reviewid',LocationCtrl.EditReviews);
+router.put('/locations/:locationid/:reviewid/upvotes',LocationCtrl.UpdateUpvotes);
+router.put('/locations/:locationid/:reviewid/:commentid/upvotes',LocationCtrl.UpdateUpvotes);
 
 /* DELETE Location pages. */
 router.delete('/locations',LocationCtrl.Delete_AllLocations);

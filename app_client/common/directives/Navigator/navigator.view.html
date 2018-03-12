@@ -8,9 +8,12 @@
       <li class="nav-item"><a href="/users/signup" class="nav-link">Sign Up</a></li>
     </ul>
     <form class="form-inline my-2 my-lg-0 pull-right">
-      <input id="filter" type="text" placeholder="Filter Results" aria-label="Filter" ng-model="textFilter" style="display:none;" class="form-control mr-sm-2"/>
+       <button type="button" class="btn btn-outline-primary clearbtn my-2 my-sm-0" onclick="clearfilter();" style="display:none;">Clear</button>
+       &nbsp;
+      <input id="filter" oninput="buttonclr();" type="text" placeholder="Filter Results" aria-label="Filter" ng-model="textFilter" style="display:none;" class="form-control mr-sm-2 filterbox"/>
       <input type="search" placeholder="Search" aria-label="Search" class="form-control mr-sm-2"/>
       <button type="submit" class="btn btn-outline-success my-2 my-sm-0">Search</button>
+      <script src="/javascripts/navigator.js">  </script>
     </form>
   </div>
 </nav>

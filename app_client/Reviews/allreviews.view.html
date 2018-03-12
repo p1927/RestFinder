@@ -1,0 +1,141 @@
+<div id="opacity"  class="Allreviews">
+
+  <div id="banner" class="page-header">
+    <div class="row">
+      <div class="col-lg-6">
+        <p class="bigtext">{{vm.message}}</p>
+      </div>
+    </div>
+     
+    <div class="row" ng-if="vm.location">
+      <div class="col-lg-6">
+        <h1>{{vm.location.name}}</h1><small>&nbsp;{{vm.location.tagline}}</small>
+      </div>
+      <div class="col-lg-6">
+        <p class="pull-right"  avgrating="vm.location.avgrating" size="40" rating="rating"></p>
+        <br>
+        <br>
+        <h2 class="pull-right"> {{vm.location.distance | filterdistance}}</h2>
+      </div>
+    </div>
+  </div>
+  <div class="row" ng-if="vm.location">
+    <div class="col-sm-8">
+      <p class="page-head">Customer Reviews
+        <div ng-repeat="review in vm.location.reviews | filter : textFilter" class="row reviews">
+          <div class="col-xs-12">
+            <div class="boxzoom1">
+              
+                <div class="page-head">{{review.reviewtitle}}
+                  <p class="pull-right"  avgrating="review.rating" size="25" rating="rating"></p>
+                </div>
+              
+                <p> {{review.reviewdate  | date: "dd MMMM yyyy"}} </p>
+                <p class="review">{{review.review}}</p>
+                <p>
+                  <span class="btn changes">
+                    <img class="img-swap" id="{{vm.location._id}}/{{review._id}}" ng-click="vm.likebutton($event,review)" src="/images/like_off.png" height="30px" width="30px"/> 
+                    &nbsp;
+                    <span class="badge-info badgemodify">{{review.upvotes}}</span>
+                  </span>
+                  &nbsp;
+                  <span class="btn changes">
+                    <img class="chattoggle" ng-click="vm.chattoggle=!vm.chattoggle" src="/images/chat.png" height="30px" width="30px"/>
+                    &nbsp;
+                    <span class="badge-info badgemodify">{{review.commentnos}}</span>
+                  </span>
+                   &nbsp;
+                 <span class="btn changes" ng-click="vm.addtoggle=!vm.addtoggle" ng-show="vm.chattoggle">
+                    <img  src="/images/add.png" height="30px" width="30px"/>
+                 </span>
+                 <button type="button" class="btn btn-secondary pull-right">{{review.author}}</button>
+               
+                <div class="row addtoggle" ng-show="vm.addtoggle">
+                  <div class="col-sm-1">
+                  <button class="btn btn-success changes" style="width:45px; height:30px;">
+                   <img class="commentpost{{vm.location._id}},{{review._id}}" ng-src="/images/reply.png" ng-click="vm.postcomment($event,review)" height="20px" width="40px"/>
+                  </button>
+                  </div>
+                  <div class="col-sm-11">
+                    <textarea rows="3" placeholder="Write comment here!" required="required" class="form-control addcomment"></textarea>
+                  </div>
+                </div>
+
+                <div  ng-repeat="comment in review.comments  | orderBy: commentdate : true" class="row commenttoggle" ng-show="vm.chattoggle">
+                  <div class="col-sm-1">
+                     
+                  </div>
+                  <div class="col-xs-12 col-sm-11">
+                    <div class="boxzoom2">
+                      <div class="comment">{{comment.commentdate | date : "dd MMMM yyyy"}}</div>
+                      <div class="comment">{{comment.comment}}</div>
+                      <p class="comment"> 
+                        <span class="btn changes">
+                          <img class="img-swap" id="{{vm.location._id}}/{{review._id}}/{{comment._id}}" ng-click="vm.likebutton($event,comment)" src="/images/like_off.png" height="25px" width="25px"/> 
+                           &nbsp;
+                          <span class="badge-info badgemodify">{{comment.upvotes}}</span>
+                        </span>
+                        &nbsp;
+<!--                         <span class="btn changes">           ////Replyno functionality not added
+                          <img src="/images/chat.png" height="25px" width="25px"/>
+                           &nbsp;
+                          <span class="badge-info badgemodify">{{comment.replynos}}</span>
+                        </span> -->
+                          <span class="badge-pill pull-right badge-secondary"> {{comment.author}}</span>
+                     
+                      </p>
+                      
+                    </div>
+                    
+                  </div>
+
+                </div>
+
+              </p>
+            </div>
+          </div>
+        </div>
+      </p>
+    </div>
+    <div class="col-sm-4">
+      <p class="page-head text-center">Recent Reviews
+        <div ng-repeat="review in vm.location.reviews | orderBy: reviewdate : true| limitTo: 5" class="row recentreviews">
+          <div class="boxzoomrecent" ng-click="vm.recentreviewfilter()">
+           
+              <div class="page-head recentreviewheading">{{review.reviewtitle}}
+               </div>
+          
+              <div>
+              <span>{{review.reviewdate| date : "dd MMMM yyyy"}}</span>
+               <span class="pull-right"  avgrating="review.rating" size="15" rating="rating">               
+              </span>
+            </div>
+              <p class="review maxheight">{{review.review}}</p>
+              <span>
+                <span class="btn changes">
+                    <img class="img-swap" src="/images/like_off.png" height="25px" width="25px"/> 
+                    &nbsp;
+                    <span class="badge-info badgemodify">{{review.upvotes}}</span>
+                  </span>
+                  &nbsp;
+                  <span class="btn changes">
+                    <img src="/images/chat.png" height="25px" width="25px"/>
+                    &nbsp;
+                    <span class="badge-info badgemodify">{{review.commentnos}}</span>
+                  </span>
+                  <span class="pull-right">- {{review.author}}</span> 
+                   
+            </span>
+             
+          </div>
+
+        </div>
+      </p>
+
+    </div>
+
+
+  </div>
+  
+</div>
+<script src="/javascripts/Allreviews.js"> </script>

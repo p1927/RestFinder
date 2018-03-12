@@ -1,4 +1,4 @@
-<div id="opacity">
+<div id="opacity"  class="AllLocation">
   <div id="banner" class="page-header">
     <div class="row">
       <div class="col-lg-6">
@@ -23,8 +23,8 @@
             </div></a>
           <p class="address">{{location.address}}</p>
           <p><span ng-repeat="facil in location.facilities">
-              <button type="button" class="btn btn-light"> {{facil}} </button>&nbsp   </span>
-            <button type="button" class="btn btn-danger pull-right"> {{location.distance | filterdistance}}</button>
+              <button type="button" ng-click="vm.facilitiesfilter($event)" class="btn btn-light"> {{facil}} </button>&nbsp   </span>
+            <button type="button" ng-click="vm.distancefilter($event)" class="btn btn-danger pull-right"> {{location.distance | filterdistance}}</button>
           </p>
         </div>
       </p>

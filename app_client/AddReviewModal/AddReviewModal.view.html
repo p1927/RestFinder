@@ -1,0 +1,23 @@
+<div class="modal-content"><span class="text-center" style="font-size: 1.5em;">Rate Us!</span>
+      <div class="modal-header">
+        <h1  class="modal-title">{{vm.name}}</h1>
+        <p class="pull-right" style="margin-top: 10px;"><span onclick="setrating(1)"> <img id="1" src="/images/favorite.png" height="30px" width="30px"/></span><span onclick="setrating(2)"> <img id="2" src="/images/favorite1.png" height="30px" width="30px"/></span><span onclick="setrating(3)"> <img id="3" src="/images/favorite1.png" height="30px" width="30px"/></span><span onclick="setrating(4)"> <img id="4" src="/images/favorite1.png" height="30px" width="30px"/></span><span onclick="setrating(5)"> <img id="5" src="/images/favorite1.png" height="30px" width="30px"/></span>
+            
+          </p>
+      </div>
+
+        <div class="modal-body" id="modal-body">
+           <form action="./new" method="post">
+          <input id="rating" type="hidden" name="rating" value="1"/>
+          <input type="hidden" name="author" value="{{vm.author}}"/>
+          <input type="hidden" name="location" value="{{vm.name}}"/>
+          <textarea name="reviewtitle" rows="1" placeholder="Add Title!" required="required" class="form-control"></textarea><br>
+          <textarea name="review" rows="5" placeholder="Here you go! Start writing here." required="required" class="form-control"></textarea>
+        </form>
+        </div>
+        <div class="modal-footer">
+            <button class="btn btn-primary" type="button" ng-click="vm.ok()">Submit</button>
+            <button class="btn btn-warning" type="button" ng-click="vm.cancel()">Cancel</button>
+        </div>
+</div>
+

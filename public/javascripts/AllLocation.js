@@ -61,20 +61,26 @@ $(".postlocation").click(function(){
       var value= $(".distance").val();              //select  Add location icon span
       if (value)
       {
-           if (navigator.geolocation) { //Checks if browser supports geolocation
-   navigator.geolocation.getCurrentPosition((position)=>{            //This gets the users current position
-     var latitude = position.coords.latitude;                    
-     var longitude = position.coords.longitude; 
-     window.location="../locations/distance?lng="+longitude+"&lat="+latitude+"&distance="+value; });}
           
-            }
+     window.location="../locations?distance="+value; }
+          
+           
       });
 
-      $(".allocation").click(function(){
-     window.location="../locations";  //All button
+$(".allocation").click(function(){      //All button        
+     window.location="../locations"; 
      });
 
-      $(document).ready(function(){
+$(window).ready(function(){
       $("#filter").show();  //Show Filter textbar
+      $(".clearbtn").show();
+      var query = location.search.slice(1); //show distance filter with value
+      if (query) { $(".distance").show(); 
+      $(".distance").val(query.split("=")[1]); }
+      
+    
 
-      });
+
+
+
+  });

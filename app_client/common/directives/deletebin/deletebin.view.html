@@ -1,0 +1,12 @@
+          <button class="btn changes">
+            <span class="confirm" ng-click="vm.deleteoptions=!vm.deleteoptions"> 
+              <img src="/images/bin.png" height="30px" width="30px"/>
+                <div class="badge badgeconfirmdelete" ng-show="vm.deleteoptions">
+                  <span id="delete{{review._id}}" class="correct" ng-click="vm.deleteconfirm($event)"><img src="/images/correct.png" height="30px" width="30px"/></span>
+                  &nbsp;
+                  <span class="cancel" ng-click="vm.deleteoptions=!vm.deleteoptions" ><img src="/images/cancel.png" height="30px" width="30px"/>
+                  </span>
+                 
+                </div>
+              </span>
+          </button>

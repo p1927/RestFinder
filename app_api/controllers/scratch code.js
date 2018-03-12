@@ -214,3 +214,71 @@ script(src='/lib/angular-route.min.js.map')
     script(src='/lib/angular.min.js.map')
 
       // script(src='/common/directives/RatingStars/ratingStars.js')
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////
+      All reviews.js
+
+      /*        
+ $("div.boxzoomrecent").unbind().click(function (){           //filter based on recent review
+var heading=$(this).find("div.recentreviewheading");
+ 
+  var head=heading.text().trim();
+  $("#filter").val(head);
+  $("#filter").trigger('input');
+  
+
+ });
+
+*/
+
+/*$(".chattoggle").unbind().click(function () {          //shows all comments in particualr review
+    var main=$(this).parents("div.boxzoom1");
+    var comments=main.find(".commenttoggle");
+    var add=main.find(".addtogglebtn");
+	comments.toggle();
+	add.toggle();
+
+
+});*/
+
+/*$(".addtogglebtn").unbind().click(function () {          //in review add button opens comment textbox
+    var main=$(this).parents("div.boxzoom1");
+    var addcommentbox=main.find(".addtoggle");
+   
+	addcommentbox.toggle();
+
+});*/
+
+/*$("[class^=commentpost]").unbind().on("click",function () {
+    var ids=$(this).attr('class').split(/commentpost|,/);
+    var locationid=ids[1];
+    var reviewid=ids[2]; ////////////////get location id review id
+
+    var main=$(this).parents("div.boxzoom1");   // get textbox
+	var textbox=main.find("textarea.addcomment");
+ 	var comment=textbox.val();
+    var addcommentbox=main.find(".addtoggle");
+   
+	
+     
+     $.ajax({ 
+      url: "/api/locations/"+locationid+"/"+reviewid+"/comment",
+      type: "POST",
+       data: { author: "Log User",
+               comment: comment},
+      cache: false,
+      success: (res)=>{  textbox.val("Successfully Posted");
+                 console.log("Comment Posted");
+                 setTimeout(function(){textbox.val("");
+                 	addcommentbox.toggle();
+                 }, 1000);
+
+             },
+       error: function (error) { 
+           alert(error.responseText);
+      }
+      });
+     
+
+
+  });*/

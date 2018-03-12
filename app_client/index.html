@@ -6,29 +6,43 @@
     <link rel="stylesheet" href="/stylesheets/style.css">
     <link rel="stylesheet" href="/stylesheets/bootstrap.css">
     <link rel="stylesheet" href="/stylesheets/amelia.bootstrap.css">
+    <script src="/javascripts/jquery-3.3.1.slim.min.js"></script>
+
+   
+    
+    <script src="/javascripts/jquery-3.1.0.js"></script> 
+    <script src="/javascripts/bootstrap.min.js"></script>
     <script src="/lib/angular.min.js"></script>
     <script src="/lib/angular-route.js"></script>
+  <!--   <script src="/lib/angular-sanitize.min.js"></script> -->
+    <script src="/javascripts/bootstrap/ui-bootstrap-custom-2.5.0.min.js"></script> 
+    <script src="/javascripts/bootstrap/ui-bootstrap-custom-tpls-2.5.0.min.js"></script> 
+    <script src="/AddReviewModal/AddReviewModal.controller.js"></script> 
     <script src="/app.js"></script>
     <script src="/locations/locations.controller.js"></script>
     <script src="/SingleLocation/singleLocations.controller.js"></script>
+    <script src="/Reviews/allreviews.controller.js"></script>
     <script src="/common/services/Geolocation.service.js"></script>
     <script src="/common/services/LocationListData.service.js"></script>
     <script src="/common/filters/formatDistance.js"></script>
     <script src="/common/directives/RatingStars/ratingStars.js"></script>
+
     <script src="/common/directives/Navigator/navigator.js"></script>
     <script src="/common/directives/genericFooter/genericFooter.js"></script>
-    <script src="/javascripts/jquery-3.3.1.slim.min.js"></script>
-    <script src="/javascripts/bootstrap.min.js"></script>
-    <script src="/javascripts/jquery-3.1.0.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAGX2KEn6RyrzyGAJ8KxxwUrTI4MeCMgtA"> </script>
+
+
     <base href="/" />
   </head>
   <body>
     <navigator></navigator>
     <div class="box">
       <div ng-view>
+
       </div>
     </div>
     <generic-footer></generic-footer>
+
   </body>
-  
+ 
 </html>

@@ -1,17 +1,21 @@
   $( document ).ready(()=> {                             //first time hidehide confirm options
-        $(".confirm").find('.badge').toggle();
-
-$.getScript("https://maps.googleapis.com/maps/api/js?key=AIzaSyAGX2KEn6RyrzyGAJ8KxxwUrTI4MeCMgtA", ()=>
-{
-    // script is now loaded and executed.
-    // put your dependent JS here.
-
+       
+       
+        $("#filter").hide();
+        $('.clearbtn').hide();
+ setTimeout( ()=>{
         if (navigator.geolocation) { //Checks if browser supports geolocation
    navigator.geolocation.getCurrentPosition((position)=>{           //This gets the users current location
      var latitude = position.coords.latitude;                    
      var longitude = position.coords.longitude;  
      var accuracy = position.coords.accuracy;               
      var coords = new google.maps.LatLng(latitude, longitude);
+
+      var str="";
+      str=$("#coords").html();
+      var coord=str.split(/[\[,\]]/);
+      var dest=[coord[1],coord[2]];
+      console.log(dest);
       var destinationcoords = new google.maps.LatLng(parseFloat(dest[1]), parseFloat(dest[0]));  //Creates variable for map coordinates
    
      var directionsService = new google.maps.DirectionsService();
@@ -36,7 +40,7 @@ $.getScript("https://maps.googleapis.com/maps/api/js?key=AIzaSyAGX2KEn6RyrzyGAJ8
        destination: destinationcoords,
        travelMode: google.maps.DirectionsTravelMode.DRIVING   };
 
-       directionsService.route(request, function (response, status) { console.log(status);
+       directionsService.route(request, function (response, status) { 
        if (status == google.maps.DirectionsStatus.OK) {
          directionsDisplay.setDirections(response);  } 
 
@@ -44,28 +48,7 @@ $.getScript("https://maps.googleapis.com/maps/api/js?key=AIzaSyAGX2KEn6RyrzyGAJ8
           });
                     
     },function error(msg){ alert('Please enable your GPS position future.'); },{maximumAge:600000, timeout:5000, enableHighAccuracy: true} ); 
- }
+ } 
+},500);
    });
-   });
- /////////////////////////////////////////////////////////////////////////////////////////////////    
-     $(".confirm").click(function () {                             //show confirm options
-        $(this).find('.badge').toggle();       });
 
-     $(".cancel").click(()=>{                              //hide confirm options
-        $(this).find('.badge').toggle();        });
-
-     
-     $("[id^=delete]").click(function(){                    //select  delete review icon span
-     var id=this.id.split("delete")[1];
-     var fullURL=$(location).attr('href').split('#')[0];
-     console.log(fullURL);
-     $.ajax({ 
-      url: fullURL+id,
-      type: "DELETE",
-      cache: false,
-      success: (res)=>{ console.log("Removed Review"+res.message);
-      $(this).parents(".row.reviews")[0].remove(); 
-                    
-             }
-      });
-      });

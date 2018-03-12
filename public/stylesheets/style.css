@@ -55,7 +55,7 @@ line-height: 2;
 
 #opacity{
 background: rgba(0,0,0,.8);
-margin:0px 50px 0px 50px;
+margin:0px 3% 0px 3%;
 padding: 30px;
 margin-bottom: 5px;
 }
@@ -75,10 +75,10 @@ padding:10px; }
 .page-head{ font-size: 20px;
 	font-weight: bold;
  line-height: 30px;
-transition: font-size 1s;
+
 margin-top: 10px; }
-.page-head:hover {
-    font-size: 22px;
+.page-head:not(.recentreviewheading):hover {
+   
 }
 
 /**************************************************************************************//*All Locations box*/
@@ -127,6 +127,18 @@ width:100%;
  	line-height: 20px;
  }
 
+ .maxheight{ 
+ max-height: 100px;
+ text-overflow: ellipsis;
+ overflow-y: hidden;
+ }
+
+.recentreviewheading{
+	font-size: 15px;
+	transition: none;
+	
+}
+
  .reviews{
  	margin-top: 20px;
 
@@ -135,6 +147,7 @@ width:100%;
  .comment,.comment>button{
 font-size: 15px !important;
  	margin: 10px;
+ 	margin-bottom: 1px;
  	text-align: justify;
  	line-height: 20px;
  }
@@ -145,7 +158,7 @@ font-size: 15px !important;
  padding-top: 0px;
  	display:inline-block;
     width:100%;
-    background: rgba(251, 251, 250, 0.1);
+    background: rgba(251, 251, 250, 0.2);
     border-radius: 5px;
     
    
@@ -154,13 +167,27 @@ font-size: 15px !important;
 	text-decoration: none !important;
 	}
 
-.opacitypanel{
+ .boxzoom2{
+ padding:10px;
+ padding-top: 0px;
+ padding-bottom: 0px;
+ 	display:inline-block;
+    width:100%;
+    background: rgba(1, 1, 0, 0.6);
+    border-radius: 5px;
+    /*border: 1px solid white;*/
+    margin-top: 2px;
+    
+   
+ }
 
-margin:5%;
+.opacitypanel{
+ background: rgba(1, 1, 0, 0.8);
+margin:3%;
 margin-top: 0px;
 padding: 30px;
 }
-
+/**************************************************************************************//*RecentReviews in All reviews */
 .recentreviews{
  	margin-top: 20px;
 font-size: 0.8em;
@@ -175,16 +202,15 @@ font-size: 0.8em;
     background: rgba(251, 251, 250, 0.2);
    
  }
-  .boxzoomrecent>a>.page-head {
-	text-decoration: none !important;
-	font-size: 1.2em;
+.boxzoomrecent:hover{
+ box-shadow: 0 0 0 0.2rem rgba(210, 223, 0, 0.5);
 	}
 
 .boxzoomrecent>p>button.btn{
 font-size: 1em !important;
 
 }
-
+/*************************************************************************************All messages*/
 .bigtext{
 
 	font-size: 2em;
@@ -194,7 +220,7 @@ font-size: 1em !important;
 													
 /**************************************************************************************/ /*Delete Review Badge and btn (Single Location)*/
 .changes{											
-	padding: 2px 0px 2px 0px!important;				
+	padding: 2px 2px 2px 2px!important;				
 	margin:1px;
 	height:38px ;
 }
@@ -211,7 +237,7 @@ font-size: 1em !important;
 	color:white;
 	padding-left:5px;
 }
-/**************************************************************************************/
+/*************************************************************************************Single location page rating */
 .aligncorrection{
 	margin-top: 25px;
 }
@@ -219,7 +245,7 @@ h2.pull-right{
 
 	margin:0px;
 }
-
+/**************************************************************************************//*Error page*/
 #opacityerror{
 
 /* background-image: url('/images/404.jpg');
@@ -235,3 +261,57 @@ p.address{
 	font-size: 14px;
 	width: 70%;
 }
+
+/**************************************************************************************//*Navigator clear button*/
+
+.clearbtn {
+  color: #007bff;
+  background-color: transparent;
+  background-image: none;
+  border-color: #007bff;
+}
+
+.clearbtn:hover {
+  color: white;
+  background-color: #007bff;
+  border-color: #007bff;
+}
+
+.filterbox {
+	
+}
+/*************************************************************************//*All reviews like and comment badge*/
+.badgemodify{
+
+	
+	padding: 0px 2px 0px 2px;
+	margin: 4px;
+	margin-left: 0px;
+	border-radius: 3px;
+}
+/**************************************************************************************/
+.postlocation,.findbylocation {
+
+	background:rgba(251, 251, 250, 0.3);
+	margin: 0px 2px 0px 2px;
+	border: 1px solid white;
+}
+/************************************************************************************** Modal position and color*/
+.modal-content {
+/*   position: absolute;
+   top: 10px;
+   right: 100px;
+   bottom: 0;
+   left: 0;*/
+   z-index: 1050;
+   overflow: auto;
+
+   background:rgba(5, 10, 2, 0.5) !important;
+}
+
+div.modal-dialog {
+   position:static;
+     top: 0px;
+   right: 0px;
+ }
+ /**************************************************************************************/
