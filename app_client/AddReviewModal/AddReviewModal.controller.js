@@ -3,12 +3,15 @@
 angular.module('ui.bootstrap')
        .controller('AddReviewCtrl', AddReviewCtrl);
 
-function AddReviewCtrl () {
+function AddReviewCtrl ($uibModalInstance) {
         var vm=this;
         vm.author="Pratyush";
         vm.name="Billbybat";
- vm.ok=function (){};
-  vm.cancel=function (){};
+ vm.modal={
+
+ 	submit: function (){},
+    cancel: function (){ $uibModalInstance.dismiss('cancel');}
+};
 
 
   }

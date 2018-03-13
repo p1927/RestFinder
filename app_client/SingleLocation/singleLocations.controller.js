@@ -38,15 +38,12 @@ vm.AddReview=function (){
      });
 };			
 
-vm.reviewredirect= function(locationid,reviewtitle){ 
- console.log('inside');
+vm.reviewredirect= function(locationid,reviewtitle){  //single location review redirect to all reviews
+ 
   $("#filter").val(reviewtitle);
- $("#filter").trigger('input');
-
-$location.path('/locations/'+locationid+'/reviews');
-
-
-};
+  $("#filter").trigger('input');
+  $location.path('/locations/'+locationid+'/reviews');
+  };
 
 
  }
