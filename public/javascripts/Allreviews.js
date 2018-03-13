@@ -1,6 +1,6 @@
  $(document).ready(function(){
       $("#filter").show();  //Show Filter textbar
-      $("#filter").val("");
+     // $("#filter").val("");
       $(".clearbtn").show();
   
 

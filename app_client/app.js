@@ -23,10 +23,12 @@ function config($routeProvider,$locationProvider)
 			               controllerAs: 'vm' })
 					.otherwise({redirectTo: '/'});
 
-		$locationProvider.html5Mode({
+	/*	$locationProvider.html5Mode({
 			  enabled: true,
-              requireBase: true
-		});
+              requireBase: false
+		});*/
+		 $locationProvider.html5Mode(true);
+   // $locationProvider.hashPrefix('!');
 }
 
 angular.module('Restfinder')

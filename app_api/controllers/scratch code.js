@@ -282,3 +282,86 @@ var heading=$(this).find("div.recentreviewheading");
 
 
   });*/
+
+// single locations delete review button
+/*         vm.deleteoptions=function ($event) { 
+		     $($event.currentTarget).find('.badge').toggle(); 
+	         };
+         vm.deletecancel=function ($event) {
+	      $($event.currentTarget).find('.badge').hide();   
+           };
+
+         vm.deleteconfirm=function ($event) { 
+			 var reviewid=$($event.currentTarget).attr('id').split("delete")[1];
+		     var locationid=$(location).attr('href').split('/')[4];
+		     
+		     $.ajax({ 
+		      url: '/api/locations/'+locationid+'/'+reviewid,
+		      type: "DELETE",
+		      cache: false,
+		      success: function (res){ console.log(res);
+		      	console.log("Removed Review"+res.message);
+		     $($event.currentTarget).parents(".row.reviews")[0].remove(); 
+		                    
+		             }
+		      });
+		          };*/
+
+		          single locations.html
+
+/*		          <!--           <button class="btn changes">
+            <span class="confirm" ng-click="vm.deleteoptions($event)"> 
+              <img src="/images/bin.png" height="30px" width="30px"/>
+                <div class="badge badgeconfirmdelete" style="display: none;">
+                  <span id="delete{{review._id}}" class="correct" ng-click="vm.deleteconfirm($event)"><img src="/images/correct.png" height="30px" width="30px"/></span>
+                  &nbsp;
+                  <span class="cancel" ng-click="vm.deletecancel($event)"><img src="/images/cancel.png" height="30px" width="30px"/>
+                  </span>
+                 
+                </div>
+              </span>
+          </button> -->*/
+/*
+                   <!--  <button type="button" class="btn btn-light">
+            Comment
+            &nbsp; <span class="badge badge-light"> {{review.commentnos}}</span>
+          </button>
+          &nbsp; -->
+     <!--   <button type="button" class="btn btn-success">
+             Upvote
+            &nbsp; <span class="badge badge-default"> {{review.upvotes}}</span>
+          </button> -->*/
+////alll location js
+              $(".findbylocation").click(function(){  
+      $(".distance").toggle();  
+      var value= $(".distance").val();              //select  Add location icon span
+      if (value)
+      { var url= "/locations?distance="+value;
+        
+    /* window.location.href="/locations?distance="+value;*/ 
+ /*   window.history.pushState({}, "Title", url);*/}
+          
+           
+      });
+
+/*$(".allocation").click(function(){      //All button        
+     window.location.href="/locations"; 
+    
+     });*/
+
+     
+     $("div.col-xs-12.col-sm-8").on("click",'#postlocationsubmit',function(){                   //select  Add location icon span
+     
+     $.ajax({ 
+      url: "../locations",
+      type: "POST",
+       data: $("#rendered-form").serialize(),
+      cache: false,
+      success: (res)=>{  window.location.replace("../locations/"+res.locations._id);
+                 
+             },
+       error: function (error) { 
+           alert(error.responseText);
+      }
+      });
+      });

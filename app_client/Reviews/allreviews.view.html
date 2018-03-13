@@ -76,13 +76,16 @@
                           <span class="badge-info badgemodify">{{comment.upvotes}}</span>
                         </span>
                         &nbsp;
+                        <deletebin commentid="{{comment._id}}" reviewid="{{review._id}}" locationid="{{vm.location._id}}" size="22px" grandfather="review" unit="comment" > </deletebin>
+                        &nbsp;
 <!--                         <span class="btn changes">           ////Replyno functionality not added
                           <img src="/images/chat.png" height="25px" width="25px"/>
                            &nbsp;
                           <span class="badge-info badgemodify">{{comment.replynos}}</span>
                         </span> -->
+                            &nbsp;
                           <span class="badge-pill pull-right badge-secondary"> {{comment.author}}</span>
-                     
+
                       </p>
                       
                     </div>
@@ -100,7 +103,7 @@
     <div class="col-sm-4">
       <p class="page-head text-center">Recent Reviews
         <div ng-repeat="review in vm.location.reviews | orderBy: reviewdate : true| limitTo: 5" class="row recentreviews">
-          <div class="boxzoomrecent" ng-click="vm.recentreviewfilter()">
+          <div class="boxzoomrecent" ng-click="vm.recentreviewfilter($event)">
            
               <div class="page-head recentreviewheading">{{review.reviewtitle}}
                </div>

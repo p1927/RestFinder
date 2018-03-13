@@ -58,41 +58,38 @@
         <button class="btn" ng-click="vm.AddReview()"><img src="/images/contract.png" height="30px" width="30px"/></button>
      
     </span>&nbsp; &emsp;
-    <a href="/locations/{{vm.location._id}}/review">Customer Reviews </a>
+    <a style="text-decoration: none; color: #debb27;" href="/locations/{{vm.location._id}}/reviews">Customer Reviews </a>
   </p>
   <div class="row reviews" ng-repeat="review in vm.location.reviews">
     <div class="col-xs-12">
-      <div class="boxzoom1"> 
-        <a href="/locations/{{vm.location._id}}/reviews">
-          <div class="page-head">{{review.reviewtitle}}
+      <div class="boxzoom1" > 
+     
+          <div class="page-head" style="color: #debb27;" ng-click="vm.reviewredirect(vm.location._id,review.reviewtitle)">{{review.reviewtitle}}
             <p class="pull-right" avgrating="review.rating" size="25" rating="rating"></p>
           </div>
-        </a>
+  
         <p> {{review.reviewdate | date: "dd MMMM yyyy"}}</p>
         <p class="review">{{review.review}}</p>
         <p>
-          <button type="button" class="btn btn-light">
-            Comment
-            &nbsp; <span class="badge badge-light"> {{review.commentnos}}</span>
-          </button>
-          &nbsp;
-          <button type="button" class="btn btn-success">
-             Upvote
-            &nbsp; <span class="badge badge-default"> {{review.upvotes}}</span>
-          </button>
-            &nbsp;
-          <button class="btn changes">
-            <span class="confirm" ng-click="vm.deleteoptions($event)"> 
-              <img src="/images/bin.png" height="30px" width="30px"/>
-                <div class="badge badgeconfirmdelete" style="display: none;">
-                  <span id="delete{{review._id}}" class="correct" ng-click="vm.deleteconfirm($event)"><img src="/images/correct.png" height="30px" width="30px"/></span>
-                  &nbsp;
-                  <span class="cancel" ng-click="vm.deletecancel($event)"><img src="/images/cancel.png" height="30px" width="30px"/>
+
+
+           <span class="changes">
+                          <img  src="/images/like_on.png" height="25px" width="25px"/> 
+                           &nbsp;
+                          <span class="badge-info badgemodify">{{review.upvotes}}</span>
+                        </span>
+                 &nbsp;
+                  <span class=" changes">
+                    <img src="/images/chat.png" height="30px" width="30px"/>
+                    &nbsp;
+                    <span class="badge-info badgemodify">{{review.commentnos}}</span>
                   </span>
-                 
-                </div>
-              </span>
-          </button>&nbsp;
+   
+            &nbsp;
+            <deletebin size="22px" reviewid="{{review._id}}" locationid="{{vm.location._id}}" grandfather="vm.location" unit="review"> </deletebin>
+
+
+          &nbsp;
           <button type="button" class="btn btn-secondary pull-right"> {{review.author}}</button>
         </p>
       </div>
