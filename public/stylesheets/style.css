@@ -11,6 +11,14 @@ a {
   color: #00B7FF;
 }
 
+li {
+padding-left: 1em;
+text-indent: -1.4em;
+line-height: 25px;
+vertical-align:text-top;
+margin-bottom: 15px;
+}
+
 form.form-inline.my-2.my-lg-0.pull-right {/*float:right;  made changes for New comment*/
 	margin-top: 5px !important;  /*themeclass set it as important so overriding*/
 }
