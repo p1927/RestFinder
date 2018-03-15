@@ -1,14 +1,20 @@
+require('dotenv').load();
 var express = require('express');
 var path = require('path');
 var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
-var routesapi=require('./app_api/routes/routes_api');
+var passport = require('passport');
+var helmet = require('helmet');
 
+require('./app_api/models/db');
+require('./app_api/config/passport');
+
+var routesapi=require('./app_api/routes/routes_api');
 var routes = require('./app_server/routes/routes');
 var users = require('./app_server/routes/users');
-var helmet = require('helmet');
+
 
 var app = express();
 app.use(helmet());
@@ -22,13 +28,25 @@ app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
-require('./app_api/models/db');
+
+
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, 'app_client')));
 
+app.use(passport.initialize());
+
 //app.use('/', routes);
 app.use('/api',routesapi);
-app.use('/users', users);
+/*app.use('/users', users);*/
+
+// error handlers
+// Catch unauthorised errors
+app.use(function (err, req, res, next) {
+if (err.name === 'UnauthorizedError') {
+res.status(401);
+res.json({"message" : err.name + ": " + err.message});
+}
+});
 
 app.use(function(req, res) {
 res.sendFile(path.join(__dirname, 'app_client', 'index.html'));

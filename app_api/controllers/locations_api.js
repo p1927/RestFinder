@@ -1,10 +1,41 @@
-
+var mongoose=require('mongoose');
 
 var Loc=require('../models/location_model');
-
+var User = mongoose.model('User');
 /////////////////////////////////////////////////////////////////////////////////////////////////////
 //All Locations  GET return type  DATA ERR [] 
 //REST GET METHODS  return type  DATA ERR MESSAGES
+/////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+
+var getAuthor = function(req, res, callback) {
+	if (req.payload && req.payload.email) { 
+		User
+			.findOne({
+				email: req.payload.email
+			})
+			.exec(function(err, user) {
+				if (!user) {
+					sendJSONresponse(res, 404, {
+						"message": "User not found"
+					});
+					return;
+				} else if (err) {
+					console.log(err);
+					sendJSONresponse(res, 404, err);
+					return;
+				}
+				callback(req, res, user.name);
+			});
+	} else {
+		sendJSONresponse(res, 404, {
+			"message": "User not found"
+		});
+		return;
+	}
+};
+
 /////////////////////////////////////////////////////////////////////////////////////////////////////
 //__________________________________________________________setting Averagerating with add review___________________________
 var setAvgRating = function (rating,newlength,location) { 
@@ -263,9 +294,10 @@ module.exports.AddLocation=function(req, res) {
 };
 //=====================================================================
 module.exports.AddReview=function(req, res) {
- if(req.params&&req.params.locationid)
- { 
- Loc.findById(req.params.locationid)
+getAuthor (req,res,function (req,res,username)
+{ if(req.params&&req.params.locationid)
+  { 
+    Loc.findById(req.params.locationid)
 	.select('avgrating reviews')
 	.exec(function (err,location){
 						 
@@ -280,22 +312,21 @@ module.exports.AddReview=function(req, res) {
 											reviewtitle: req.body.reviewtitle,
 											rating: req.body.rating,
 											review: req.body.review,
-											author: req.body.author
-																			
-						 				});
+											author: username });
 							location.save((err,location)=>{
 										if (err) { sendJsonResponse(res, 400, err); 
 											console.log('Error API: AddReview: ',err);} 
 										else { var len=location.reviews.length;
 											   var thisreview=location.reviews[len-1];
 											   setAvgRating(thisreview.rating,len,location);
-											   sendJsonResponse(res, 201, {message:"Successfully Posted"}); }
-											   });
-								} 
+											  /* sendJsonResponse(res, 201, {message:"Successfully Posted"}); }*/
+											   sendJsonResponse(res, 201, thisreview); }
+											   }); } 
 						});
 
  }
  else  {sendJsonResponse(res,404,{"message":"API: Invalid Address, provide locationID"});}
+});//callback
 
 };
 //====================================================================================

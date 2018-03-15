@@ -60,7 +60,7 @@
     </span>&nbsp; &emsp;
     <a style="text-decoration: none; color: #debb27;" href="/locations/{{vm.location._id}}/reviews">Customer Reviews </a>
   </p>
-  <div class="row reviews" ng-repeat="review in vm.location.reviews">
+  <div class="row reviews" ng-repeat="review in vm.location.reviews |  orderBy: reviewdate : true">
     <div class="col-xs-12">
       <div class="boxzoom1" > 
      

@@ -17,11 +17,16 @@ function LocationData ($http){
   var AllReviewsData= function (locationid)
  {  return  $http.get("/api/locations/"+locationid+"/review");};	
 
+ var AddReview = function (locationid, data) {
+return $http.post('/api/locations/' + locationid + '/review', data);
+};
+
  																							// no validation present in API
 
  return {ListData: ListData,
          SingleLocationData : SingleLocationData,
-         AllReviewsData : AllReviewsData };
+         AllReviewsData : AllReviewsData,
+         AddReview: AddReview };
 
  }
 

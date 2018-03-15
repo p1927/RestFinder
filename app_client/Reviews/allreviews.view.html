@@ -40,17 +40,17 @@
                   </span>
                   &nbsp;
                   <span class="btn changes">
-                    <img class="chattoggle" ng-click="vm.chattoggle=!vm.chattoggle" src="/images/chat.png" height="30px" width="30px"/>
+                    <img class="chattoggle" ng-click="vm.chattoggle[$index]=!vm.chattoggle[$index]" src="/images/chat.png" height="30px" width="30px"/>
                     &nbsp;
                     <span class="badge-info badgemodify">{{review.commentnos}}</span>
                   </span>
                    &nbsp;
-                 <span class="btn changes" ng-click="vm.addtoggle=!vm.addtoggle" ng-show="vm.chattoggle">
+                 <span class="btn changes" ng-click="vm.addtoggle[$index]=!vm.addtoggle[$index]" ng-show="vm.chattoggle[$index]">
                     <img  src="/images/add.png" height="30px" width="30px"/>
                  </span>
                  <button type="button" class="btn btn-secondary pull-right">{{review.author}}</button>
                
-                <div class="row addtoggle" ng-show="vm.addtoggle">
+                <div class="row addtoggle" ng-show="vm.addtoggle[$index]">
                   <div class="col-sm-1">
                   <button class="btn btn-success changes" style="width:45px; height:30px;">
                    <img class="commentpost{{vm.location._id}},{{review._id}}" ng-src="/images/reply.png" ng-click="vm.postcomment($event,review)" height="20px" width="40px"/>
@@ -61,7 +61,7 @@
                   </div>
                 </div>
 
-                <div  ng-repeat="comment in review.comments  | orderBy: commentdate : true" class="row commenttoggle" ng-show="vm.chattoggle">
+                <div  ng-repeat="comment in review.comments  | orderBy: commentdate : true" class="row commenttoggle" ng-show="vm.chattoggle[$index]">
                   <div class="col-sm-1">
                      
                   </div>

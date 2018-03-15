@@ -21,6 +21,14 @@ function config($routeProvider,$locationProvider)
 			               templateUrl: 'Reviews/allreviews.view.html',
 			               controller: 'AllReviewCtrl',
 			               controllerAs: 'vm' })
+					.when ('/register',{
+			               templateUrl: 'Auth/Register/register.view.html',
+			               controller: 'RegisterCtrl',
+			               controllerAs: 'vm' })
+		/*			.when ('/login',{
+			               templateUrl: 'Auth/Login/login.view.html',
+			               controller: 'LoginCtrl',
+			               controllerAs: 'vm' })*/
 					.otherwise({redirectTo: '/'});
 
 	/*	$locationProvider.html5Mode({

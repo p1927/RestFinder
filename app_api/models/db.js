@@ -59,3 +59,4 @@ process.exit(0);
 });
 });
 require('./location_model');
+require('./user');

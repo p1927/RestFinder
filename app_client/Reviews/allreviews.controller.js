@@ -6,6 +6,9 @@ angular.module('Restfinder')
 function AllReviewCtrl ($scope,$routeParams,LocationData) { 
          var vm = this;
 
+vm.addtoggle=[];
+vm.chattoggle=[];
+
          vm.locationid=$routeParams.locationid;
          vm.message="Loading Data";
 
