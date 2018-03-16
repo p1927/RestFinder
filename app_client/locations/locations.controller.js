@@ -11,10 +11,10 @@ function locationListCtrl ($scope,LocationData,Geolocation,$location) {
          console.log("Distance here can cause problem");
          vm.message="Checking your location";
 
-		 vm.getData= function (position)                           //defining functions to be passed
+		/* vm.getData= function (position)                           //defining functions to be passed
 			{ vm.message="Searching for places nearby!";
 			var lat = position.coords.latitude,
-                lng = position.coords.longitude;
+                lng = position.coords.longitude;*/
                // console.log(lat,lng);
                var lat=17;
                var lng=78;
@@ -32,9 +32,9 @@ function locationListCtrl ($scope,LocationData,Geolocation,$location) {
 			      else vm.message="API Lookup Error";} ,function (err){
 			     	console.log(err);
 			     	vm.message="Something went wrong!";
-			     });};
+			     });/*};*/
 
-		  vm.showError = function (error) {
+		/*  vm.showError = function (error) {
 				$scope.$apply(function() {
 				vm.message = error.message; });
 				};
@@ -43,7 +43,7 @@ function locationListCtrl ($scope,LocationData,Geolocation,$location) {
 				$scope.$apply(function() {
 				vm.message = "Geolocation not supported by this browser."; 	});
 				};
-		 Geolocation.getPosition(vm.getData,vm.showError,vm.noGeo);
+		 Geolocation.getPosition(vm.getData,vm.showError,vm.noGeo);*/
 	
 
 vm.facilitiesfilter=function($event){        //facilities filter

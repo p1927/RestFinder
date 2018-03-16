@@ -8,7 +8,9 @@ function navigator () {
 
  return { 
  	restrict: 'EA',
-	templateUrl: '/common/directives/Navigator/navigator.view.html'};
- };
+ 	templateUrl: '/common/directives/Navigator/navigator.view.html',
+	controller: 'NavigatorCtrl as navm'
+  };
+ }
 
  })();

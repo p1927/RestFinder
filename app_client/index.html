@@ -1,51 +1,49 @@
 <!DOCTYPE html>
 <html ng-app="Restfinder">
-  <head>
-    <meta name="viewport" content="width-device-width, initial-scale=1.0">
-    <title></title>
-    <link rel="stylesheet" href="/stylesheets/style.css">
-    <link rel="stylesheet" href="/stylesheets/bootstrap.css">
-    <link rel="stylesheet" href="/stylesheets/amelia.bootstrap.css">
-    <script src="/javascripts/jquery-3.3.1.slim.min.js"></script>
-
-   
-    
-    <script src="/javascripts/jquery-3.1.0.js"></script> 
-    <script src="/javascripts/bootstrap.min.js"></script>
-    <script src="/lib/angular.min.js"></script>
-    <script src="/lib/angular-route.js"></script>
-  <!--   <script src="/lib/angular-sanitize.min.js"></script> -->
-    <script src="/javascripts/bootstrap/ui-bootstrap-custom-2.5.0.min.js"></script> 
-    <script src="/javascripts/bootstrap/ui-bootstrap-custom-tpls-2.5.0.min.js"></script> 
-    <script src="/AddReviewModal/AddReviewModal.controller.js"></script> 
-    <script src="/app.js"></script>
-    <script src="/locations/locations.controller.js"></script>
-    <script src="/SingleLocation/singleLocations.controller.js"></script>
-    <script src="/Reviews/allreviews.controller.js"></script>
-    <script src="/Auth/Register/register.controller.js"></script> 
-    <script src="/common/services/Geolocation.service.js"></script>
-    <script src="/common/services/LocationListData.service.js"></script>
-     <script src="/common/services/Authentication.service.js"></script>
-    <script src="/common/filters/formatDistance.js"></script>
-    <script src="/common/directives/RatingStars/ratingStars.js"></script>
-    <script src="/common/directives/deletebin/deletebin.js"></script>
-
-    <script src="/common/directives/Navigator/navigator.js"></script>
-    <script src="/common/directives/genericFooter/genericFooter.js"></script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCyUjfQHbRbAARhdRpiEfEK931324IKZ4I"> </script>
-
-
-    <base href="/#" />
-  </head>
-  <body>
+    <head>
+        <meta name="viewport" content="width-device-width, initial-scale=1.0">
+        <title></title>
+        <link rel="stylesheet" href="/stylesheets/style.css">
+        <link rel="stylesheet" href="/stylesheets/bootstrap.css">
+        <link rel="stylesheet" href="/stylesheets/amelia.bootstrap.css">
+        <script src="/javascripts/jquery-3.3.1.slim.min.js"></script>
+        
+        <script src="/javascripts/jquery-3.1.0.js"></script>
+        <script src="/javascripts/bootstrap.min.js"></script>
+        <script src="/lib/angular.min.js"></script>
+        <script src="/lib/angular-route.js"></script>
+        <!--   <script src="/lib/angular-sanitize.min.js"></script> -->
+        <script src="/javascripts/bootstrap/ui-bootstrap-custom-2.5.0.min.js"></script>
+        <script src="/javascripts/bootstrap/ui-bootstrap-custom-tpls-2.5.0.min.js"></script>
+        
+        <script src="/app.js"></script>
+        <script src="/locations/locations.controller.js"></script>
+        <script src="/AddReviewModal/AddReviewModal.controller.js"></script>
+        <script src="/SingleLocation/singleLocations.controller.js"></script>
+        <script src="/Reviews/allreviews.controller.js"></script>
+        <script src="/Auth/Register/register.controller.js"></script>
+        
+        <script src="/common/services/Geolocation.service.js"></script>
+        <script src="/common/services/LocationListData.service.js"></script>
+        <script src="/common/services/Authentication.service.js"></script>
+        
+        <script src="/common/filters/formatDistance.js"></script>
+        <script src="/common/directives/RatingStars/ratingStars.js"></script>
+        <script src="/common/directives/deletebin/deletebin.js"></script>
+        <script src="/common/directives/genericFooter/genericFooter.js"></script>
+        
+        <script src="/common/directives/Navigator/navigator.js"></script>
+        <script src="/common/directives/Navigator/navigator.controller.js"></script>
+        
+        <!-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCyUjfQHbRbAARhdRpiEfEK931324IKZ4I"> </script> -->
+        <base href="/#" />
+    </head>
+    <body>
     <navigator></navigator>
     <div class="box">
-      <div ng-view>
-
-      </div>
+        <div ng-view>
+        </div>
     </div>
-    <generic-footer></generic-footer>
-
-  </body>
- 
+<generic-footer></generic-footer>
+</body>
 </html>

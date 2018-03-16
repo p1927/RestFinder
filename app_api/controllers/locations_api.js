@@ -188,8 +188,7 @@ module.exports.AllReviews=function(req, res) {
 				{console.log("Error API: AllReviews: ",err);
 					sendJsonResponse(res,200,err); return;}
 			else
-				{ console.log(reviews);
-					sendJsonResponse(res,200,reviews);}
+				{ sendJsonResponse(res,200,reviews);}
 		});}
  else {sendJsonResponse(res,404,{"message":"API: Invalid Address"});}
 

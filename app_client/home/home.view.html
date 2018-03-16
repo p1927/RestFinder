@@ -6,84 +6,83 @@
       </div>
     </div>
   </div>
-
- <div id="content" class="page-header">
-  <div class="row">
-    <div class="col-xs-12 col-sm-8">
-      
-      <div id="carouselExampleIndicators" data-ride="carousel" class="carousel slide">
-       
-        <div class="carousel-inner">
-          <div class="carousel-item active">
-            <p class="panel sub">Restaurant Finder provides an easy way to find the best places to eat near you. If you allow it, the app can find the nearest restaurants just by using your location. However, if you already have a place in mind, type in the address or the name and let it work for you!</p>
-          </div>
-          <div class="carousel-item">
-            <div class="panel sub">
-              This Web application is made over MEAN stack. 
-              <br>
-              <li>MongoDB : Document Database</li>
-              <li>Express : Web Application Framework</li>
-              <li>AngularJS : Front-End Web Application Framework</li>
-              <li>NodeJS : Software Platform</li>   
+  <div id="content" class="page-header">
+    <div class="row">
+      <div class="col-xs-12 col-sm-8">
+        
+        <div id="carouselExampleIndicators" data-ride="carousel" class="carousel slide">
+          
+          <div class="carousel-inner">
+            <div class="carousel-item active">
+              <p class="panel sub">Restaurant Finder provides an easy way to find the best places to eat near you. If you allow it, the app can find the nearest restaurants just by using your location. However, if you already have a place in mind, type in the address or the name and let it work for you!</p>
             </div>
-          </div>
-          <div class="carousel-item">
-            <div class="panel sub">
-              <ui>
+            <div class="carousel-item">
+              <div class="panel sub">
+                This Web application is made over MEAN stack.
+                <br>
+                <li>MongoDB : Document Database</li>
+                <li>Express : Web Application Framework</li>
+                <li>AngularJS : Front-End Web Application Framework</li>
+                <li>NodeJS : Software Platform</li>
+              </div>
+            </div>
+            <div class="carousel-item">
+              <div class="panel sub">
+                <ui>
                 <li>A web application to find restaurants nearby the user location. </li>
                 <li>Uses HTML5 Geo-location features to get user latitude and longitudes.</li>
                 <li>Uses Google Directions API for providing the directions to the restaurant.</li>
                 <li>Built on MVC architecture.</li>
                 <li>Responsive Web Design, Single page application made using AngularJS routing.</li>
-              </ui>
+                </ui>
+              </div>
             </div>
-          </div>
-          <div class="carousel-item">
-            <div class="panel sub">Features :
-              <ui>
+            <div class="carousel-item">
+              <div class="panel sub">Features :
+                <ui>
                 <li>Find nearby restaurants based on location and maximum distance allowed by user.</li>
                 <li>Filter restaurants based on facilities, name, distance, address.</li>
                 <li>Provides directions from user location to restaurant.</li>
                 <li>Users can Login and add reviews, comments and upvote. </li>
                 <li>User authorization using Google and Facebook.</li>
-              </ui>
+                </ui>
+              </div>
+            </div>
+            <div class="carousel-item">
+              <div class="panel sub">
+                <li>Implements RESTful- API supporting GET, PUT, POST, DELETE methods for restaurants, reviews, comments, users.</li>
+                <li>User-API for User Information and user authentication using JSON Web Token and OAuth.</li>
+              </div>
             </div>
           </div>
-          <div class="carousel-item">
-            <div class="panel sub">
-              <li>Implements RESTful- API supporting GET, PUT, POST, DELETE methods for restaurants, reviews, comments, users.</li>
-              <li>User-API for User Information and user authentication using JSON Web Token and OAuth.</li>
-            </div>
-          </div>
+          <a href="#carouselExampleIndicators" role="button" data-slide="prev" class="carousel-control-prev">
+            <span aria-hidden="true" class="carousel-control-prev-icon"></span>
+            <span class="sr-only">Previous</span>
+          </a>
+          <a href="#carouselExampleIndicators" role="button" data-slide="next" class="carousel-control-next">
+            <span aria-hidden="true" class="carousel-control-next-icon"></span>
+            <span class="sr-only">Next</span>
+          </a>
         </div>
-        <a href="#carouselExampleIndicators" role="button" data-slide="prev" class="carousel-control-prev">
-          <span aria-hidden="true" class="carousel-control-prev-icon"></span>
-          <span class="sr-only">Previous</span>
-        </a>
-        <a href="#carouselExampleIndicators" role="button" data-slide="next" class="carousel-control-next">
-          <span aria-hidden="true" class="carousel-control-next-icon"></span>
-          <span class="sr-only">Next</span>
-        </a>
-      </div>
-       <ol class="carousel-indicators">
+        <ol class="carousel-indicators">
           <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
           <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
           <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
           <li data-target="#carouselExampleIndicators" data-slide-to="3"></li>
           <li data-target="#carouselExampleIndicators" data-slide-to="4"></li>
         </ol>
-    </div>
-    <div class="col-xs-12 col-sm-4">
-      <p class="page-header">RestFinder helps you find places to rest when out and about.</p>
-      <p class="page">This simple, easy, fast, and fun food finder works worldwide.</p>
-      <hr>
-      <p class="page">You can find all the information you might need, such as opening and working hours, phone numbers and much more!</p>
+      </div>
+      <div class="col-xs-12 col-sm-4">
+        <p class="page-header">RestFinder helps you find places to rest when out and about.</p>
+        <p class="page">This simple, easy, fast, and fun food finder works worldwide.</p>
+        <hr>
+        <p class="page">You can find all the information you might need, such as opening and working hours, phone numbers and much more!</p>
+      </div>
     </div>
   </div>
 </div>
-</div>
-
-
-
-• 
-
+<script type="text/javascript">
+$("#filter").val("");
+$("#filter").hide();
+$('.clearbtn').hide();
+</script>

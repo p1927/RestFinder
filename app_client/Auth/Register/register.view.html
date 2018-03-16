@@ -1,78 +1,69 @@
- <link rel="stylesheet" href="/stylesheets/styleRegister.css">
+<link rel="stylesheet" href="/stylesheets/styleRegister.css">
 <div id="opacity" >
-
   
-
-    <div class="row">
-       <div  class="col-md-6">
-       <div id="banner" class="page-header">
+  <div class="row">
+    <div  class="col-md-6">
+      <div id="banner" class="page-header">
         <h1>RestFinder</h1><small>&nbsp;Find places to work with wifi near you!</small>
       </div>
-       <div class="bigtext">Message     
+      <div class="bigtext">{{vm.formError}}
       </div>
-      </div>
-    
-       <div  align="center" class="col-md-6">
-
-  <form id="form"  > 
-  
-  <div class="registerbox">
-      <h1 id="logintoregister">Login</h1>
-
-    <div class="group showtoggle">      
-      <input class="inputMaterial" type="text" name="name" id="name"  pattern="[A-Za-z][A-Za-z ]*" disabled required>
-      <span class="highlight"></span>
-      <span class="bar"></span>
-      <label>Name</label>
-      </div>   
-
-    <div class="group">      
-      <input id="una" class="inputMaterial" type="text" name="uname" oninput="" required>
-      <span class="highlight"></span>
-      <span class="bar"></span>
-      <label>Username</label>
-      </div>
-    <div class="group">      
-      <input class="inputMaterial" type="password" name="pwd" id="password" oninput="setConfirmPassword();" required>
-      <span class="highlight"></span>
-      <span class="bar"></span>
-      <label>Password</label>
-      </div>
-   <div class="group showtoggle">      
-      <input class="inputMaterial" type="password" id="confirmPassword" onfocusout="validatePassword();" disabled required>
-      <span class="highlight"></span>
-      <span class="bar"></span>
-      <label>Confirm Password</label>
-      </div>
-
-
-      
-      <button id="buttonlogintoregister" type="submit">Login</button>
-   
-      <p id="plogintoregister">Not a registered user? </p>
-      <p id="textchange" onclick="register();" > Register Here</p>
     </div>
-     </form>
-   </div>
-   
+    
+    <div  align="center" class="col-md-6">
+      <form id="registerform" ng-submit="vm.onSubmit()" >
+        
+        <div class="registerbox">
+          <h1 id="logintoregister">Login</h1>
+          <div class="group showtoggle">
+            <input class="inputMaterial" type="text" name="name" id="name" ng-model="vm.credentials.name" pattern="[A-Za-z][A-Za-z ]*" disabled required>
+            <span class="highlight"></span>
+            <span class="bar"></span>
+            <label>Name</label>
+          </div>
+          <div class="group">
+            <input id="email" class="inputMaterial" type="text" name="email" ng-model="vm.credentials.email" required>
+            <span class="highlight"></span>
+            <span class="bar"></span>
+            <label>E-mail</label>
+          </div>
+          <div class="group">
+            <input class="inputMaterial" type="password" name="pwd" id="password" ng-model="vm.credentials.password" oninput="setConfirmPassword();" required>
+            <span class="highlight"></span>
+            <span class="bar"></span>
+            <label>Password</label>
+          </div>
+          <div class="group showtoggle">
+            <input class="inputMaterial" type="password" id="confirmPassword" onfocusout="validatePassword();" disabled required>
+            <span class="highlight"></span>
+            <span class="bar"></span>
+            <label>Confirm Password</label>
+          </div>
+          
+          <button id="buttonlogintoregister" type="submit">Login</button>
+          
+          <p id="plogintoregister">Not a registered user? </p>
+          <p id="textchange" onclick="register();" > Register Here</p>
+        </div>
+      </form>
+    </div>
+    
   </div>
   
-      <script src="/javascripts/registerjs.js"> </script> 
-    </div>
-<!--    /* 
-    <% if(session.getAttribute("info")=="NR"){%>
-    $("#plogintoregister").innerHTML="You are not registered with us. Please Register.";
-    <%}%>
-    ////////////////////////
-    <% if(session.getAttribute("info")=="WRONG PASS"){%>
-    $("#plogintoregister").innerHTML="The Password in incorrect. Please try again.";
-    $("#una").value=session.getAttribute("unret");
-    <%}%>*/
-    ////////////////////////////
+  <script src="/javascripts/registerjs.js"> </script>
+</div>
+<!--    /*
+<% if(session.getAttribute("info")=="NR"){%>
+$("#plogintoregister").innerHTML="You are not registered with us. Please Register.";
+<%}%>
+////////////////////////
+<% if(session.getAttribute("info")=="WRONG PASS"){%>
+$("#plogintoregister").innerHTML="The Password in incorrect. Please try again.";
+$("#una").value=session.getAttribute("unret");
+<%}%>*/
+////////////////////////////
 
-   
-     
-     
- 
+
+
 
 /////////////////////////////////////////////////// -->

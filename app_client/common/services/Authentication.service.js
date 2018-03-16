@@ -1,10 +1,12 @@
 (function() {
+
 	angular
 		.module('Restfinder')
 		.service('authentication', authentication);
 	//	authentication.$inject = ['$window'];
 
-	function authentication($window) {
+	function authentication($window, $http) {
+		 
 		var saveToken = function(token) {
 			$window.localStorage['Restfinder-token'] = token;
 		};
@@ -13,21 +15,18 @@
 		};
 
 		var register = function(user) {
+			console.log("register service", user);
 			return $http.post('/api/register', user)
-				.then(function(data) {
-					saveToken(data.token);
-				}).catch(function(err) {
-					console.log("Error", err);
+				.then(function(res) { console.log(res);
+					saveToken(res.data.token);
 				});
 		};
 
 		var login = function(user) {
 			return $http.post('/api/login', user)
-				.then(function(data) {
-					saveToken(data.token);
-				}).catch(function(err) {
-					console.log("Error", err);
-				});
+				.then(function(res) {console.log(res);
+					saveToken(res.data.token);
+				}); //error not handeled passed to calling function
 		};
 
 		var logout = function() {

@@ -13,20 +13,19 @@ function setConfirmPassword(){
 }
     
  
-    
-  function  dbcheck (uname)
-    { 
-      /* $.ajax({
-        type: "POST",
-        url:  'CCCCCCCCCCCCCCCCCCC',
-        data: {userN:uname},
-        success: function(resp) {
-        if(resp=='1')
-          $('#plogintoregister').text("The Username already exists. Try Again.");  
-        else  $('#plogintoregister').text("Pretty Good."); 
-        
-            }
-        }); */
+  function  dbcheck (email)
+    {  
+       $.ajax({
+        type: "GET",
+        url:  '/api/userexists',
+        data: {email:email},
+        success: function(resp) { 
+              if(resp.found==='true')
+                {  $('#plogintoregister').text("The Username already exists. Try Again.");  }
+              else  {$('#plogintoregister').text("Pretty Good!");}
+            },
+        error: function(err){   $('#plogintoregister').text("Username verification failed!"); console.log(err);}
+        }); 
       }
        
    var cont =0;
@@ -47,7 +46,7 @@ function setConfirmPassword(){
      cont++;
     
     if(cont==1){////////////////////////////////////USER CLICKS ON REGISTER
-    //  $('.registerbox').animate({height:'595px'}, 550);
+  
       $('.showtoggle').css('display','block');
       $('#logintoregister').text('Registration');
       $('#buttonlogintoregister').text('Register');
@@ -57,7 +56,7 @@ function setConfirmPassword(){
       
       $('#confirmPassword').prop('disabled',false);
      
-      $('#una').attr('oninput', 'dbcheck(this.value);');
+      $('#email').attr('onfocusout', 'dbcheck(this.value);');
 
       /////////////////////////////////////////////////
       
@@ -66,12 +65,12 @@ function setConfirmPassword(){
     else
     {///////////////////////////////////////////USER CLICKS ON LOGIN 
       $('.showtoggle').css('display','none');
- //     $('.registerbox').animate({height:'365px'}, 550);
+
       $('#logintoregister').text('Login');
       $('#buttonlogintoregister').text('Login');
       $('#plogintoregister').text("Not a registered User?");
       $('#textchange').text('Register');
-      $('una').removeAttr('oninput');
+      $('#email').removeAttr('onfocusout');
       $('#name').prop('disabled',true);
      
       

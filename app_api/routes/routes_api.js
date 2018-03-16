@@ -47,5 +47,6 @@ router.delete('/locations/:locationid/:reviewid/:commentid/:replyid', auth, Loca
 ///////////////////////////////////////////////////////////////User Authentication routes
 router.post('/register', ctrlAuth.register);
 router.post('/login', ctrlAuth.login);
+router.get('/userexists',ctrlAuth.userexists);  // register form on focus out check
 
 module.exports = router;

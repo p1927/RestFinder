@@ -3,7 +3,7 @@
 	angular.module('Restfinder')
 		.controller('SinglelocationCtrl', SinglelocationCtrl);
 
-	function SinglelocationCtrl($scope, $routeParams, LocationData, $uibModal, $location) {
+	function SinglelocationCtrl($scope, $routeParams, LocationData, $uibModal, $location, authentication) {
 		var vm = this;
 		vm.locationid = $routeParams.locationid;
 		vm.message = "Loading Data";
@@ -55,7 +55,9 @@
 			$location.path('/locations/' + locationid + '/reviews');
 		};
 
+         vm.currentPath = $location.path();
 
+    vm.LoggedIn = authentication.isLoggedIn();
 	}
 
 })(); //IIFE

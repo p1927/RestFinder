@@ -365,3 +365,15 @@ var heading=$(this).find("div.recentreviewheading");
       }
       });
       });
+
+
+    <!--     <ul class="button btn userbtn navbar-right">
+      <li ng-hide="navm.LoggedIn"><a href="/register/?page={{navm.currentPath}}">Sign in</a></li>
+      <li ng-show="navm.LoggedIn" class="dropdown">
+        <a href="" class="dropdown-toggle" data-toggle="dropdown">{{navm.user.name}} </a>
+        <ul class="dropdown-menu" role="menu">
+          <li><a href="/profile" >View Profile</a></li>
+          <li><a href="" ng-click="navm.logout()">Logout</a></li>
+        </ul>
+      </li>
+    </ul> -->

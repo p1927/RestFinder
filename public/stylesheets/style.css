@@ -19,7 +19,7 @@ vertical-align:text-top;
 margin-bottom: 15px;
 }
 
-form.form-inline.my-2.my-lg-0.pull-right {/*float:right;  made changes for New comment*/
+#navigationform {/*float:right;  made changes for New comment*/
 	margin-top: 5px !important;  /*themeclass set it as important so overriding*/
 }
 /**************************************************************************************//*Navbar Layouts*/
@@ -334,4 +334,72 @@ div.modal-dialog {
    right: 0px;
  }
  /**************************************************************************************/
-/*////////////////////////////////////////////////////////////////////////////////////////////////////////////*//*Register page*/
+/*////////////////////////////////////////////////////////////////////////////////////////////////////////////*//*Nav bar User button*/
+.button.btn.userbtn{
+
+  background-color:#007bffc4;
+  border: 1px solid #007bff ;
+  list-style: none
+}
+
+.button.btn.userbtn:hover {
+  
+  background-color: #007bff;
+  border-color: #007bff;
+}
+
+.button.btn.userbtn:focus {
+  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.5);
+}
+
+.userbtn>li>a{
+	color: #fff !important;
+	margin: 0px;
+	text-decoration: none;
+	font-size: 1em;
+
+}
+
+.userbtn>li>a:hover{
+	color: #fff !important;
+}
+.userbtn>li.dropdown{
+	margin: 0px;
+}
+.userbtn>li>ul.dropdown-menu {
+background-color: #f9fafa; 
+min-width: 90px;
+position: absolute;
+top: 130%;
+right: -18%;
+
+}
+
+.userbtn>li.dropdown>ul>li{
+	margin-bottom: 5px !important;
+}
+
+.userbtn>li.dropdown>ul>li:hover{
+	background-color: #15b5c1;
+}
+
+
+a.button.btn.userbtn {	
+	color: #fff !important;
+	margin-top:5px;
+	text-decoration: none;
+	}
+
+.button.btn.userbtn>.dropdown{
+
+ padding: 0px 0px 0px 20px;
+}
+
+ul.button.btn.userbtn { margin-top: 4px;
+	padding-top: 6px;
+padding-bottom: 6px ;}
+/*////////////////////////////////////////////////////////////////////////////////////////////////////////////*/    
+#navbarSupportedContent{
+	margin-top: 20px;
+}
+

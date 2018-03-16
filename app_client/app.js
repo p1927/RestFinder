@@ -25,10 +25,6 @@ function config($routeProvider,$locationProvider)
 			               templateUrl: 'Auth/Register/register.view.html',
 			               controller: 'RegisterCtrl',
 			               controllerAs: 'vm' })
-		/*			.when ('/login',{
-			               templateUrl: 'Auth/Login/login.view.html',
-			               controller: 'LoginCtrl',
-			               controllerAs: 'vm' })*/
 					.otherwise({redirectTo: '/'});
 
 	/*	$locationProvider.html5Mode({
