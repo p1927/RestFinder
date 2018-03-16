@@ -15,9 +15,7 @@ function locationListCtrl ($scope,LocationData,Geolocation,$location) {
 			{ vm.message="Searching for places nearby!";
 			var lat = position.coords.latitude,
                 lng = position.coords.longitude;
-               // console.log(lat,lng);
-               var lat=17;
-               var lng=78;
+                
 			   LocationData.ListData(lng,lat,distance)
 			     .then( function (res){ 
 			     	vm.data=res;
