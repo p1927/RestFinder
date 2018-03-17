@@ -1,116 +1,141 @@
-( function () { 
+(function() {
 
-angular.module('Restfinder')
-       .controller('AllReviewCtrl', AllReviewCtrl);
+	angular.module('Restfinder')
+		.controller('AllReviewCtrl', AllReviewCtrl);
 
-function AllReviewCtrl ($scope,$routeParams,LocationData) { 
-         var vm = this;
+	function AllReviewCtrl($scope, $routeParams, LocationData, authentication) {
+		var vm = this;
 
-vm.addtoggle=[];
-vm.chattoggle=[];
+		vm.addtoggle = [];
+		vm.chattoggle = [];
 
-         vm.locationid=$routeParams.locationid;
-         vm.message="Loading Data";
+		vm.locationid = $routeParams.locationid;
+		vm.message = "Loading Data";
 
-			   LocationData.AllReviewsData(vm.locationid)  
-			     .then( function (res){ 
-			     	if(res.data instanceof Array) 
-			        {		
-			     	if (res.data.length)
-					    {     vm.location=res.data[0];
-					    	  vm.message=""; }
-				        }
-			      else vm.message="API Lookup Error"; //location Id not found or error in searching
+		LocationData.AllReviewsData(vm.locationid)
+			.then(function(res) {
+					if (res.data instanceof Array) {
+						if (res.data.length) {
+							vm.location = res.data[0];
+							vm.message = "";
+						}
+					} else vm.message = "API Lookup Error"; //location Id not found or error in searching
 
-			       }, 
-			       function (err){ 
-			     	console.log(err);
-			     	vm.message=err.data.message; // invalid location id
-			     });
-		
-vm.likebutton= function ($event,entity) {     //like put request
-   var element = $($event.currentTarget);
-   if (element.attr("class") == "img-swap") { 
+				},
+				function(err) {
+					console.log(err);
+					vm.message = err.data.message; // invalid location id
+				});
+		/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-	     $.ajax({ 
-			      url: "/api/locations/"+element.attr("id")+"/upvotes",
-			      type: "PUT",
-			       data: { increment: 1 },
-			      cache: false,
-			      success: (res)=>{  console.log("Like");
-			                         element.attr("src", element.attr("src").replace("_off","_on"));
-			                        
-			                       $scope.$apply( entity.upvotes++);
+		$scope.$watch(function() {
+			return authentication.currentUser();
+		}, function() {
+			vm.user = authentication.currentUser();
+		}, true);
 
-			                         },
-			       error: function (error) { alert(error.responseText);  }
-	      });
-	  } 
-	else {
-
-		 $.ajax({ 
-			      url: "/api/locations/"+element.attr("id")+"/upvotes",
-			      type: "PUT",
-			       data: { increment: 0 },
-			      cache: false,
-			      success: (res)=>{  console.log("Unlike");
-			                         element.attr("src", element.attr("src").replace("_on","_off"));
-			                        $scope.$apply( entity.upvotes--);
+		$scope.$watch(function() {
+			return authentication.isLoggedIn();
+		}, function() {
+			vm.LoggedIn = authentication.isLoggedIn();
+		}, true);
 
 
-			                         },
-			       error: function (error) { alert(error.responseText);  }
-			      });
+		//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+		vm.likebutton = function($event, entity) { //like put request
+			if (vm.LoggedIn) {
+				var element = $($event.currentTarget);
+				if (element.attr("class") == "img-swap") {
 
-  
-    }
-   element.toggleClass("on");
- };
+					$.ajax({
+						url: "/api/locations/" + element.attr("id") + "/upvotes",
+						type: "PUT",
+						data: {
+							increment: 1
+						},
+						cache: false,
+						success: (res) => {
+							console.log("Like");
+							element.attr("src", element.attr("src").replace("_off", "_on"));
 
-vm.postcomment=function($event,entity) {
-    var element = $($event.currentTarget);
-    var ids=element.attr('class').split(/commentpost|,/);
-    var locationid=ids[1];
-    var reviewid=ids[2]; ////////////////get location id review id
+							$scope.$apply(entity.upvotes++);
 
-    var main=element.parents("div.boxzoom1");   // get textbox
-	var textbox=main.find("textarea.addcomment");
- 	var comment=textbox.val();
-    var author="Log User";
-	
-     
-     $.ajax({ 
-      url: "/api/locations/"+locationid+"/"+reviewid+"/comment",
-      type: "POST",
-       data: { author: author,
-               comment: comment},
-      cache: false,
-      success: (res)=>{  
-      	                 entity.comments.push(res);
-                         entity.commentnos++;
+						},
+						error: function(error) {
+							alert(error.responseText);
+						}
+					});
+				} else {
+
+					$.ajax({
+						url: "/api/locations/" + element.attr("id") + "/upvotes",
+						type: "PUT",
+						data: {
+							increment: 0
+						},
+						cache: false,
+						success: (res) => {
+							console.log("Unlike");
+							element.attr("src", element.attr("src").replace("_on", "_off"));
+							$scope.$apply(entity.upvotes--);
+
+
+						},
+						error: function(error) {
+							alert(error.responseText);
+						}
+					});
+
+
+				}
+				element.toggleClass("on");
+			}
+		};
+
+		vm.postcomment = function($event,index,entity) {
+			var element = $($event.currentTarget);
+			var ids = element.attr('class').split(/commentpost|,/);
+			var locationid = ids[1];
+			var reviewid = ids[2]; ////////////////get location id review id
+
+			var main = element.parents("div.boxzoom1"); // get textbox
+			var textbox = main.find("textarea.addcomment");
+
+			var formData = {
+				author: vm.user.name,
+				comment: textbox.val()
+			};
+
+
+			LocationData.AddComment(locationid, reviewid, formData)
+				.then(function(res) {
+
+						entity.comments.push(res.data);
+						entity.commentnos++;
+						textbox.val("");
+						vm.addtoggle[index] = false;
                         
-                         textbox.val("");
-                         vm.addtoggle=false;
-                          $scope.$apply();
-                 	  
-             },
-       error: function (error) { 
-           alert(error.responseText);
-      }
-      }); //add comment button post
-};
-
-
-vm.recentreviewfilter=function($event){ // //filter based on recent review
-    var element = $($event.currentTarget);
-  var heading=element.find("div.recentreviewheading");
-  var head=heading.text().trim();
-  $("#filter").val(head);
-  $("#filter").trigger('input');
-};
+					},
+					function(err) {
+						alert(err.data.message);
+					}
+				); // invalid location id
 
 
 
-			 } 
+		};
+
+
+		vm.recentreviewfilter = function($event) { // //filter based on recent review
+			var element = $($event.currentTarget);
+			var heading = element.find("div.recentreviewheading");
+			var head = heading.text().trim();
+			$("#filter").val(head);
+			$("#filter").trigger('input');
+		};
+
+
+
+	}
 
 })();

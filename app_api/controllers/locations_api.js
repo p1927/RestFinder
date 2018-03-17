@@ -39,8 +39,7 @@ var getAuthor = function(req, res, callback) {
 /////////////////////////////////////////////////////////////////////////////////////////////////////
 //__________________________________________________________setting Averagerating with add review___________________________
 var setAvgRating = function (rating,newlength,location) { 
-	console.log(newlength);
-	console.log(location);
+	console.log("API: setAvgRating");
  location.avgrating=parseInt((location.avgrating*(newlength-1)+rating)/newlength);
  location.save((err,location)=>{
 	if (err) {console.log('Error API: Rating: ',err);

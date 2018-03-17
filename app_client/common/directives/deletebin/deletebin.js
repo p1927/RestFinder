@@ -24,7 +24,7 @@
 	}
 
 
-	function deletebinCtrl($scope) {
+	function deletebinCtrl($scope,authentication) {
 
 		$scope.deleteconfirm = function($event) { 
 			var grandfather=$scope.grandfather;
@@ -36,9 +36,13 @@
 			} else url = '/api/locations/' + $scope.locationid + '/' + $scope.reviewid;
 
 
+
 			$.ajax({
 				url: url,
 				type: "DELETE",
+				headers: {
+					Authorization: 'Bearer ' + authentication.getToken()
+				},
 				cache: false,
 				success: function(res) {
 					

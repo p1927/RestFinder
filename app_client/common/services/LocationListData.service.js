@@ -27,13 +27,41 @@
 			});
 		};
 
+		/*var DeleteReview = function(locationid,reviewid) {
+			return $http.delete('/api/locations/' + locationid + '/'+reviewid, {
+				headers: {
+					Authorization: 'Bearer ' + authentication.getToken()
+				}
+			});
+		};*/
+
+		var AddComment = function(locationid,reviewid, data) {
+			return $http.post( "/api/locations/" + locationid + "/" + reviewid + "/comment", data, {
+				headers: {
+					Authorization: 'Bearer ' + authentication.getToken()
+				}
+			});
+		};
+
+	/*	var DeleteComment = function(locationid,reviewid,commentid) {
+			return $http.delete( "/api/locations/" + locationid + "/" + reviewid + "/"+commentid, {
+				headers: {
+					Authorization: 'Bearer ' + authentication.getToken()
+				}
+			});
+		};*/
+
 		// no validation present in API
 
 		return {
 			ListData: ListData,
 			SingleLocationData: SingleLocationData,
 			AllReviewsData: AllReviewsData,
-			AddReview: AddReview
+			AddReview: AddReview,
+			AddComment:AddComment/*,
+			DeleteReview: DeleteReview,
+			DeleteComment:DeleteComment*/
+
 		};
 
 	}

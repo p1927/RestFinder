@@ -84,7 +84,7 @@
           </span>
           
           &nbsp;
-          <deletebin size="22px" reviewid="{{review._id}}" locationid="{{vm.location._id}}" grandfather="vm.location" unit="review"> </deletebin>
+          <deletebin ng-show="review.author===vm.user.name" size="22px" reviewid="{{review._id}}" locationid="{{vm.location._id}}" grandfather="vm.location" unit="review"> </deletebin>
           &nbsp;
           <button type="button" class="btn btn-secondary pull-right"> {{review.author}}</button>
         </p>

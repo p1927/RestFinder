@@ -59,9 +59,22 @@
 			$location.path('/locations/' + locationid + '/reviews');
 		};
 
-		vm.currentPath = $location.path();
+		 $scope.$watch(function() {
+      return authentication.isLoggedIn();
+    }, function() {
+      vm.LoggedIn = authentication.isLoggedIn();
+    }, true);
 
-		vm.LoggedIn = authentication.isLoggedIn();
+    $scope.$watch(function() {
+      return authentication.currentUser();
+    }, function() {
+      vm.user = authentication.currentUser();
+    }, true);
+
+    $scope.$watch(function() {
+      return $location.path();
+    }, function() {
+      vm.currentPath = $location.path();},true);
 		
 		vm.getmap = function(position) { //This gets the users current location
 			var latitude = position.coords.latitude;

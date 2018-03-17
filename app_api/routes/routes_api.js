@@ -1,7 +1,6 @@
 var express = require('express');
 var router = express.Router();
 var LocationCtrl = require('../controllers/locations_api');
-var OthersCtrl = require('../controllers/others');
 var ctrlAuth = require('../controllers/authentication');
 
 var jwt = require('express-jwt');
