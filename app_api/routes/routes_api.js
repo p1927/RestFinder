@@ -21,7 +21,7 @@ router.get('/locations/:locationid/:reviewid/:commentid', LocationCtrl.SingleCom
 //router.get('/locations/:locationid/:reviewid/:commentid/:replyid',LocationCtrl.SingleReply);
 
 /* POST Location pages. */
-router.post('/locations', auth, LocationCtrl.AddLocation);
+router.post('/locations', LocationCtrl.AddLocation);
 router.post('/locations/:locationid/review', auth, LocationCtrl.AddReview);
 router.post('/locations/:locationid/:reviewid/comment', auth, LocationCtrl.AddComment);
 router.post('/locations/:locationid/:reviewid/:commentid/reply', auth, LocationCtrl.AddReply);
