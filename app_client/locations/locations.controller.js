@@ -7,7 +7,7 @@ function locationListCtrl ($scope,LocationData,Geolocation,$location) {
          var vm = this;
          var distance=$location.search().distance;
 
-         if (!distance) {distance=2000000;}
+         if (!distance) {distance=20000000;}
          console.log("Distance here can cause problem");
          vm.message="Checking your location";
 
