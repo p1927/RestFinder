@@ -422,4 +422,13 @@ padding-bottom: 0.6rem ;}
   nav.navbar{ justify-content: space-between;
   }
  /* nav button.navbar-toggler {float:right;}*/
+
+ #carouselExampleIndicators .panel.sub{
+ 	margin: 0px;
+ 	margin-bottom: 10px;
+ }
+
+ ol.carousel-indicators { bottom: -20px; }
+ a.carousel-control-next {right: -11%;}
+  a.carousel-control-prev {left: -11%;}
 }
