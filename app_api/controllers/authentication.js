@@ -1,6 +1,7 @@
 var passport = require('passport');
 var mongoose = require('mongoose');
 var User = mongoose.model('User');
+var strategy='local';
 
 var sendJSONresponse = function(res, status, content) {
 	res.status(status);
@@ -41,7 +42,7 @@ module.exports.login = function(req, res) {
 		});
 		return;
 	}
-	passport.authenticate('local', function(err, user, info) {
+	passport.authenticate(strategy, function(err, user, info) {
 		var token;
 		if (err) {
 			sendJSONresponse(res, 404, err);

@@ -3,10 +3,10 @@
 	angular.module('Restfinder')
 		.controller('RegisterCtrl', RegisterCtrl);
 
-	function RegisterCtrl($location, authentication) {
+	function RegisterCtrl($location, authentication) { 
 		var vm = this;
 		vm.formError = "Let's get started!  ";
-	
+
 		vm.credentials = {
 			name: "",
 			email: "",
@@ -15,7 +15,7 @@
 
 		vm.returnPage = $location.search().page || '/';
 
-		vm.onSubmit = function() {
+		vm.onSubmit = function() { 
 
 			console.log(vm.credentials);
 			if (!vm.credentials.email || !vm.credentials.password) {
@@ -55,10 +55,11 @@
 					if (err.data.message) {
 						console.log(err.data.message);
 						vm.formError = "Are you sure you registered first?";
-						 $("#plogintoregister").text('Invalid E-mail or Password');
+						$("#plogintoregister").text('Invalid E-mail or Password');
 					} else vm.formError = "API: Something went wrong!";
 				});
 		};
+
 
 
 	}

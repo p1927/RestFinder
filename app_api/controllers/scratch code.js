@@ -377,3 +377,14 @@ var heading=$(this).find("div.recentreviewheading");
         </ul>
       </li>
     </ul> -->
+
+    Café Campus
+    Bar
+    357 Rue Prince Arthur E, FakeMontréal, QC H2X 1B4, Canada
+    Monday-Friday: 0800 hrs-1600 hrs, Sunday: 1300 hrs -2100 hrs
+    Cocktails, Dance, Bars
+    45.5177335
+    -74
+    campuscafe@fmail.com
+    www.safecafecampus.com
+    0784-844-1010
