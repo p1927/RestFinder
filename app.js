@@ -14,7 +14,7 @@ var helmet = require('helmet');
 
 require('./app_api/models/db');
 require('./app_api/config/passport');
-require('./app_api/config/oauthpassport');
+/*require('./app_api/config/oauthpassport');*/
 
 var routesapi=require('./app_api/routes/routes_api');
 
