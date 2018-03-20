@@ -1,6 +1,6 @@
 $(".postlocation").click(function() {
 
-  $("div.col-xs-12.col-sm-8").children('*').not('.message').toggle();
+  $("div.col-sm-12.col-md-8").children('*').not('.message').toggle();
 
 
 });

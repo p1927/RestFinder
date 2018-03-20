@@ -22,6 +22,10 @@
       return $location.path();
     }, function() {
       vm.currentPath = $location.path();
+      
+     if(vm.currentPath==='/locations')
+      {$('#navlocation').addClass('d-md-none d-lg-block d-sm-block');}
+    else $('#navlocation').removeClass('d-md-none d-lg-block d-sm-block');
 
       $('li.nav-item').each(function() {
         var anchor = $(this).children('a');

@@ -1,6 +1,6 @@
 body {
   padding: 3%;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  font: 1.4rem "Lucida Grande", Helvetica, Arial, sans-serif;
   background-image: url('/images/restback.jpg');
   background-repeat: no-repeat;
   }
@@ -14,47 +14,50 @@ a {
 li {
 padding-left: 1em;
 text-indent: -1.4em;
-line-height: 25px;
+line-height: 2.5rem;
 vertical-align:text-top;
-margin-bottom: 15px;
+margin-bottom: 1.5rem;
 }
 
-#navigationform {/*float:right;  made changes for New comment*/
+nav>#navbarSupportedContent>.navigationform {/*float:right;  made changes for New comment*/
 	margin-top: 5px !important;  /*themeclass set it as important so overriding*/
 }
 /**************************************************************************************//*Navbar Layouts*/
 nav {opacity:0.8;
-	font-size:18px;
-	padding:30px;
-	margin-bottom: 30px;
+	font-size:1.8rem;
+	padding:3rem;
+	margin-bottom: 3rem;
 }
 .navbar-brand{
-	font-size:34px !important;
+	font-size:3.4rem !important;
 	margin-right: 10%;
+	margin-top: 5%;
 }
 
-.nav-item {margin-right: 20px;
+.nav-item {margin-right: 1rem;
 	
 }
 
 
-nav>a>img {margin: 10px;
-margin-right: 20px;}
+nav>a>img {margin: 1rem;
+margin-right: 1.5rem;}
 
-/**************************************************************************************/
-#content>.row>.col-xs-12.col-sm-8{
-	font-size: 18px;
+  #navfilter{ float:right; }
+
+/**************************************************************************************//**/
+#content>.row>.col-sm-12.col-md-8{
+	font-size: 1.8rem;
 	text-align: justify;
 	}
 
-#banner >.row>.col-lg-6> h1{
-	font-size: 70px !important;
+#banner >.row>.col-md-6> h1{
+	font-size: 7rem !important;
 	margin: 0px;
 }
-#banner{font-size: 18px;}
+#banner{font-size: 1.8rem;}
 
 .panel.sub{ 
-padding: 20px;
+padding: 4%;
 margin-left: 10%;
 margin-right: 10%;
 margin-bottom: 7%;
@@ -72,7 +75,7 @@ margin-bottom: 5px;
 	margin-top: 0px;
 }
 
-p.page,p.page-header{font-size: 20px;
+p.page,p.page-header{font-size: 2rem;
 margin-left: 0px;}
 
 footer{ background: rgba(0,0,0,0.7);
@@ -80,7 +83,7 @@ margin-left: -25px;
 margin-right: -25px;
 padding:10px; }
 
-.page-head{ font-size: 20px;
+.page-head{ font-size: 2rem;
 	font-weight: bold;
  line-height: 30px;
 
@@ -122,7 +125,7 @@ width:100%;
  }
 
  .card-text{
- 	font-size: 25px;
+ 	font-size: 2.5rem;
  	font-weight: bolder;
  	text-align: center;
  	 background: rgba(223, 110, 30, 1);
@@ -142,7 +145,7 @@ width:100%;
  }
 
 .recentreviewheading{
-	font-size: 15px;
+	font-size: 1.5rem;
 	transition: none;
 	
 }
@@ -153,7 +156,7 @@ width:100%;
  }
 
  .comment,.comment>button{
-font-size: 15px !important;
+font-size: 1.5rem !important;
  	margin: 10px;
  	margin-bottom: 1px;
  	text-align: justify;
@@ -247,18 +250,18 @@ font-size: 1em !important;
 }
 
 .allocation {
-	font-size: 14px;
+	font-size: 1.4rem;
 	height:48px;
 	border-radius:5px;
 	background:rgba(251, 251, 250, 0.2);
 	color:white;
-	padding-left:5px;
+	padding-left:0.5rem;
 }
 .allocation:hover,.allocation:focus{  
 	color:#4af9c2 !important; }
 /*************************************************************************************Single location page rating */
 .aligncorrection{
-	margin-top: 25px;
+	margin-top: 2.5rem;
 }
 h2.pull-right{
 
@@ -271,13 +274,13 @@ h2.pull-right{
   background-repeat: no-repeat;*/
 margin: 0% 3% 0% 3%;
 padding: 3%;
-margin-bottom: 5px;
+margin-bottom: 0.5rem;
 
 
 }
 
 p.address{
-	font-size: 14px;
+	font-size: 1.4rem;
 	width: 70%;
 }
 
@@ -304,9 +307,9 @@ p.address{
 
 	
 	padding: 0px 2px 0px 2px;
-	margin: 4px;
+	margin: 0.4rem;
 	margin-left: 0px;
-	border-radius: 3px;
+	border-radius: 0.3rem;
 }
 /**************************************************************************************/
 .postlocation,.findbylocation {
@@ -368,7 +371,7 @@ div.modal-dialog {
 }
 .userbtn>li>ul.dropdown-menu {
 background-color: #f9fafa; 
-min-width: 90px;
+min-width: 10rem;
 position: absolute;
 top: 130%;
 right: -18%;
@@ -376,7 +379,7 @@ right: -18%;
 }
 
 .userbtn>li.dropdown>ul>li{
-	margin-bottom: 5px !important;
+	margin-bottom: 0.5rem !important;
 }
 
 .userbtn>li.dropdown>ul>li:hover{
@@ -386,20 +389,37 @@ right: -18%;
 
 a.button.btn.userbtn {	
 	color: #fff !important;
-	margin-top:5px;
+	margin-top:0.5rem;
 	text-decoration: none;
 	}
 
 .button.btn.userbtn>.dropdown{
 
- padding: 0px 0px 0px 20px;
+ padding: 0rem 0rem 0rem 2rem;
 }
 
-ul.button.btn.userbtn { margin-top: 4px;
-	padding-top: 6px;
-padding-bottom: 6px ;}
+ul.button.btn.userbtn { margin-top: 0.4rem;
+	padding-top: 0.6rem;
+padding-bottom: 0.6rem ;}
 /*////////////////////////////////////////////////////////////////////////////////////////////////////////////*/    
 #navbarSupportedContent{
-	margin-top: 20px;
+	margin-top: 2rem;
 }
 
+/*////////////////////////////////////////////////////////////////////////////////////////////////////////////*/
+@media (max-width: 768px) {
+  .navbar-header {
+    float: left;
+  }
+  #navbarSupportedContent li {
+  	text-indent: 0px;
+  }
+
+  #navfilter{ float:left; }
+
+  .navbar-nav .nav-link{ padding:0px 0px; }
+
+  nav.navbar{ justify-content: space-between;
+  }
+ /* nav button.navbar-toggler {float:right;}*/
+}

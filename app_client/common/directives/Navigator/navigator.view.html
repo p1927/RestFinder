@@ -1,15 +1,14 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light navbar-fixed-top">
+<nav class="navbar navbar-expand-md navbar-light bg-light navbar-fixed-top">
   <a href="/">
-    <img src="/images/icon1.png" width="60" height="60" alt=""/>
+    <img class="pull-left" src="/images/icon1.png" width="60" alt=""/>
+    <span class="navbar-brand">RestFinder</span>
   </a>
-  <a href="/"><span class="navbar-brand">RestFinder</span></a>
   <button type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler"><span class="navbar-toggler-icon"></span></button>
   <div id="navbarSupportedContent" class="collapse navbar-collapse">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item"><a href="/" class="nav-link">Home<span class="sr-only">(current)</span></a></li>
       <li class="nav-item"><a href="/about" class="nav-link">About</a></li>
-      <li class="nav-item"><a href="/locations" class="nav-link">Browse Locations</a></li>
-      
+      <li id="navlocation" class="nav-item"><a href="/locations" class="nav-link">Browse Locations</a></li>
     </ul>
     <div>
       <a ng-hide="navm.LoggedIn" class="button btn userbtn navbar-right" href="/register/?page={{navm.currentPath}}">Sign in</a>
@@ -23,13 +22,17 @@
         </li>
       </ul>
     </div>
-    <form id="navigationform" class="form-inline my-2 my-lg-0 pull-right">
-      <button type="button" class="btn btn-outline-primary clearbtn my-2 my-sm-0" onclick="clearfilter();" style="display:none;">Clear</button>
-      &nbsp;
-      <input id="filter" oninput="buttonclr();" type="text" placeholder="Filter Results" aria-label="Filter" ng-model="textFilter" style="display:none;" class="form-control mr-sm-2 filterbox"/>
-      <input type="search" placeholder="Search" aria-label="Search" class="form-control mr-sm-2"/>
+    
+    <form id="navigationform" class="form-inline d-none d-xl-block pull-right navigationform">
+      
+      <input type="search" placeholder="Search" aria-label="Search" class="form-control mr-sm-1"/>
       <button type="submit" class="btn btn-outline-success my-2 my-sm-0">Search</button>&nbsp;
       <script src="/javascripts/navigator.js">  </script>
     </form>
-  </div>
-</nav>
+    
+    <form id="navfilter" class="form-inline my-2 my-lg-0 navigationform"><button type="button" class="btn btn-outline-primary clearbtn my-2 my-sm-0" onclick="clearfilter();" style="display:none;">Clear</button>
+      &nbsp;
+      <input id="filter" oninput="buttonclr();" type="text" placeholder="Filter Results" aria-label="Filter" ng-model="textFilter" style="display:none;" class="form-control mr-sm-1 filterbox"/></form>
+      
+    </div>
+  </nav>
