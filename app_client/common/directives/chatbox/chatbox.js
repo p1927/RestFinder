@@ -38,8 +38,9 @@ function chatbox() {
 			message: ''
 		};
 
-		$scope.$watch(vm.currentUser, () => {
+		$scope.$watch(function() {return authentication.currentUser();}, () => {
 			vm.logout();
+			vm.currentUser=authentication.currentUser();
 			if (vm.currentUser) {
 				vm.newUser = {
 					name: vm.currentUser.name,
@@ -52,7 +53,7 @@ function chatbox() {
 				};
 				vm.joinRoom();
 			} else {
-				
+				vm.collapse();
 			}
 		}, true);
 
@@ -161,7 +162,9 @@ function chatbox() {
 		}
 
 		vm.collapse = function() {
-
+        if(vm.collapsed)
+            $("#chatarrow").attr("src", "/images/down.png");
+        else  $("#chatarrow").attr("src", "/images/up.png");
 			vm.collapsed = !vm.collapsed;
 
 

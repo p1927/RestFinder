@@ -98,9 +98,10 @@
 
  position: fixed;
  bottom: 0;
- right: 3%;
+ right: 0;
   width: 94%;
-    z-index:2;
+    z-index:3;
+    padding-bottom: 0px;
    
 }
 
