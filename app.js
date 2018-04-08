@@ -6,8 +6,21 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var passport = require('passport');
+var app = express();
+var server  = app.listen(process.env.PORT || 3000);
+var io      = require('socket.io').listen(server);
 
 
+io.on('connection', function (socket) { 
+  console.log('User connected');
+  socket.on('disconnect', function() {
+    console.log('User disconnected');
+
+  });
+  socket.on('save-message', function (data) { 
+     io.emit('new-message', { message: data });
+  });
+});
 
 
 var helmet = require('helmet');
@@ -17,11 +30,12 @@ require('./app_api/config/passport');
 /*require('./app_api/config/oauthpassport');*/
 
 var routesapi=require('./app_api/routes/routes_api');
+var routeschatapi=require('./app_api/routes/chatroutes_api');
 
 
 
 
-var app = express();
+/*var app = express();*/
 app.use(helmet());
 // view engine setup
 
@@ -41,7 +55,7 @@ app.use(passport.initialize());
 
 
 app.use('/api',routesapi);
-
+app.use('/chatapi',routeschatapi);
 
 // error handlers
 // Catch unauthorised errors
