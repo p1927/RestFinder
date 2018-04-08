@@ -23,8 +23,8 @@ function chatbox() {
 		var vm = this;
 		var socket = io.connect();
 		vm.currentUser = authentication.currentUser();
-		vm.user = JSON.parse(localStorage.getItem("user"));
-		vm.chats = {};
+		
+		vm.chats = [];
 		vm.joinned = false;
 		vm.collapsed = true;
 
@@ -41,6 +41,7 @@ function chatbox() {
 		$scope.$watch(function() {return authentication.currentUser();}, () => {
 			vm.logout();
 			vm.currentUser=authentication.currentUser();
+			
 			if (vm.currentUser) {
 				vm.newUser = {
 					name: vm.currentUser.name,
@@ -58,10 +59,11 @@ function chatbox() {
 			}
 		}, true);
 
-		vm.start = function() {
+		vm.start = function() {  
 
-
-			if (vm.user !== null) {
+     vm.user = JSON.parse(localStorage.getItem("user"));
+ 
+			if (vm.user !== null) {  
 				vm.getChatByRoom(vm.user.room);
 				vm.msgData = {
 					room: vm.user.room,
@@ -69,10 +71,10 @@ function chatbox() {
 					message: ''
 				};
 				vm.joinned = true;
-				vm.scrollToBottom();
+				vm.scrollToBottom();}
 
 
-				socket.on('new-message', function(data) {
+				socket.on('new-message', function(data) { 
 					if (data.message.room === vm.user.room) {
 						vm.chats.push(data.message);
 						$scope.$apply();
@@ -82,12 +84,12 @@ function chatbox() {
 							message: ''
 						};
 						vm.scrollToBottom();
-					}
-				});
+					 }
+				 });
 
 
 
-			}
+			
 		}
 
 
@@ -116,6 +118,7 @@ function chatbox() {
 		vm.joinRoom = function() {
 			var date = new Date();
 			localStorage.setItem("user", JSON.stringify(vm.newUser));
+			vm.user=JSON.parse(localStorage.getItem("user"));
 			vm.getChatByRoom(vm.newUser.room);
 			vm.msgData = {
 				room: vm.newUser.room,
@@ -124,7 +127,7 @@ function chatbox() {
 			};
 			vm.joinned = true;
 			vm.collapsed = false;
-
+          
 			socket.emit('save-message', {
 				room: vm.newUser.room,
 				name: vm.newUser.name,
@@ -133,7 +136,7 @@ function chatbox() {
 			});
 		}
 
-		vm.sendMessage = function() {
+		vm.sendMessage = function() { 
 			chat.post(vm.msgData)
 				.then((result) => {
 					socket.emit('save-message', result.data);
