@@ -54,6 +54,11 @@ margin-right: 1.5rem;}
 	font-size: 7rem !important;
 	margin: 0px;
 }
+
+#banner >.row>.col-lg-6> h1{
+	font-size: 7rem !important;
+	margin: 0px;
+}
 #banner{font-size: 1.8rem;}
 
 .panel.sub{ 

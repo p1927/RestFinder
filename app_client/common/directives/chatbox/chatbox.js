@@ -53,6 +53,7 @@ function chatbox() {
 				};
 				vm.joinRoom();
 			} else {
+				vm.collapsed = false;
 				vm.collapse();
 			}
 		}, true);
