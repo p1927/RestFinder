@@ -54,7 +54,7 @@ var setAvgRating = function (rating,newlength,location) {
 var updateAverageRating = function(locationid) {
 		Loc
 			.findById(locationid)
-			.select('rating reviews')
+			.select('avgrating reviews')
 			.exec( 	function(err, location) {
 					if (!err) {
 					 doSetAverageRating(location);
